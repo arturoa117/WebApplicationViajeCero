@@ -20,7 +20,6 @@ namespace WebApiViejaCero.Controllers
         //GET api/Institutions
 
         [HttpGet]
-
         public async Task<ActionResult<IEnumerable<Institution>>> GetInstitution()
         {
             return await _context.Institutions.ToListAsync();

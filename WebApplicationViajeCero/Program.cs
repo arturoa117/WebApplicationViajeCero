@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using WebApplicationViajeCero.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +14,9 @@ builder.Services.AddSwaggerGen();
 
 //MySql conn
 
+
 string _GetConnetionString = builder.Configuration.GetConnectionString("Connection");
-builder.Services.AddDbContextPool<AppDbContext>(options => options.UseMySQL(_GetConnetionString));
+builder.Services.AddDbContextPool<AppDbContext>(options => options.UseMySql(_GetConnetionString, ServerVersion.AutoDetect(_GetConnetionString)));
 
 var app = builder.Build();
 
