@@ -29,10 +29,10 @@ namespace WebApiViejaCero.Controllers
         }
 
         // GET: api/Requests/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Request>> GetRequest(int id)
+        [HttpGet("{uuid}")]
+        public async Task<ActionResult<Request>> GetRequest(Guid uuid)
         {
-            var request = await _context.Requests.FindAsync(id);
+            var request = await _context.Requests.FindAsync(uuid);
 
             if (request == null)
             {
@@ -44,10 +44,10 @@ namespace WebApiViejaCero.Controllers
 
         // PUT: api/Requests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRequest(int id, Request request)
+        [HttpPut("{uuid}")]
+        public async Task<IActionResult> PutRequest(Guid uuid, Request request)
         {
-            if (id != request.Id)
+            if (uuid != request.Uuid)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace WebApiViejaCero.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RequestExists(id))
+                if (!RequestExists(uuid))
                 {
                     return NotFound();
                 }
@@ -81,14 +81,14 @@ namespace WebApiViejaCero.Controllers
             _context.Requests.Add(request);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRequest", new { id = request.Id }, request);
+            return CreatedAtAction("GetRequest", new { uuid = request.Uuid }, request);
         }
 
         // DELETE: api/Requests/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRequest(int id)
+        [HttpDelete("{uuid}")]
+        public async Task<IActionResult> DeleteRequest(Guid uuid)
         {
-            var request = await _context.Requests.FindAsync(id);
+            var request = await _context.Requests.FindAsync(uuid);
             if (request == null)
             {
                 return NotFound();
@@ -100,9 +100,9 @@ namespace WebApiViejaCero.Controllers
             return NoContent();
         }
 
-        private bool RequestExists(int id)
+        private bool RequestExists(Guid uuid)
         {
-            return _context.Requests.Any(e => e.Id == id);
+            return _context.Requests.Any(e => e.Uuid == uuid);
         }
     }
 }

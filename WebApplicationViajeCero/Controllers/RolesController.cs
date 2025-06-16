@@ -26,11 +26,11 @@ namespace WebApiViejaCero.Controllers
         }
 
         //GET api/Roles/5
-        [HttpGet("{id}")]
+        [HttpGet("{uuid}")]
 
-        public async Task<ActionResult<Role>> GetRole(int id)
+        public async Task<ActionResult<Role>> GetRole(Guid uuid)
         {
-            var role = await _context.Roles.FindAsync(id);
+            var role = await _context.Roles.FindAsync(uuid);
 
             if (role == null)
             {
@@ -42,11 +42,11 @@ namespace WebApiViejaCero.Controllers
 
         //Put api/Roles/5
 
-        [HttpPut("{id}")]
+        [HttpPut("{uuid}")]
 
-        public async Task<ActionResult<Role>> PutRole(int id, Role role) 
+        public async Task<ActionResult<Role>> PutRole(Guid uuid, Role role) 
         {
-            if (id != role.Id)
+            if (uuid != role.Uuid)
             {
                 return BadRequest();
             }
@@ -59,7 +59,7 @@ namespace WebApiViejaCero.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoleExists(id))
+                if (!RoleExists(uuid))
                 {
                     return NotFound();
                 }
@@ -80,14 +80,14 @@ namespace WebApiViejaCero.Controllers
             _context.Roles.Add(role);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRole", new {id = role.Id}, role);
+            return CreatedAtAction("GetRole", new {uuid = role.Uuid}, role);
         }
 
         //DELETE api/Roles/5
 
         [HttpDelete]
 
-        public async Task<IActionResult> DeleteRole(int id)
+        public async Task<IActionResult> DeleteRole(Guid uuid)
         {
             var role = await _context.Roles.FindAsync();
 
@@ -103,9 +103,9 @@ namespace WebApiViejaCero.Controllers
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        public bool RoleExists(int id)
+        public bool RoleExists(Guid uuid)
         {
-            return _context.Roles.Any(x => x.Id == id);
+            return _context.Roles.Any(x => x.Uuid == uuid);
         }
     }
 }

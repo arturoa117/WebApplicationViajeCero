@@ -29,10 +29,10 @@ namespace WebApiViejaCero.Controllers
         }
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        [HttpGet("{uuid}")]
+        public async Task<ActionResult<User>> GetUser(Guid uuid)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.FindAsync(uuid);
 
             if (user == null)
             {
@@ -44,10 +44,10 @@ namespace WebApiViejaCero.Controllers
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        [HttpPut("{uuid}")]
+        public async Task<IActionResult> PutUser(Guid uuid, User user)
         {
-            if (id != user.Id)
+            if (uuid != user.Uuid)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace WebApiViejaCero.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!UserExists(uuid))
                 {
                     return NotFound();
                 }
@@ -81,14 +81,14 @@ namespace WebApiViejaCero.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { uuid = user.Uuid }, user);
         }
 
         // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        [HttpDelete("{uuid}")]
+        public async Task<IActionResult> DeleteUser(Guid uuid)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.FindAsync(uuid);
             if (user == null)
             {
                 return NotFound();
@@ -100,9 +100,9 @@ namespace WebApiViejaCero.Controllers
             return NoContent();
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(Guid uuid)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Uuid == uuid);
         }
     }
 }

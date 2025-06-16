@@ -1,0 +1,49 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
+using WebApplicationViajeCero.Models;
+using WebApplicationViajeCero.Context;
+using System.Text.Json;
+
+namespace WebApplicationViajeCero.Seeders.Seeds
+{
+    public class ProvinceSeeder
+    {
+        public static void Seed(AppDbContext context)
+        {
+            string filePath = Path.GetFullPath(
+                Path.Combine(Directory.GetCurrentDirectory(), "Seeders", "Data", "provinces.json")
+            );
+
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("No se encontró el archivo JSON", filePath);
+
+            string json = File.ReadAllText(filePath, System.Text.Encoding.UTF8);
+
+            var provincesFromJson = JsonSerializer.Deserialize<List<string>>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            });
+
+            if (provincesFromJson == null || !provincesFromJson.Any())
+                return;
+
+            var existingProvinceNames = context.Provinces
+                .Select(p => p.Name)
+                .ToHashSet(); 
+
+            var newProvinces = provincesFromJson
+                .Where(p => !existingProvinceNames.Contains(p))
+                .ToList();
+
+            var newProvinceEntities = newProvinces
+                .Select(name => new Province { Name = name })
+                .ToList();
+
+            context.Provinces.AddRange(newProvinceEntities);
+            context.SaveChanges();
+        }
+
+    }
+
+
+}

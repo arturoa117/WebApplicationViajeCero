@@ -28,9 +28,9 @@ namespace WebApiViejaCero.Controllers
 
         //GET api/Institutions/5
 
-        [HttpGet("{id}")]
+        [HttpGet("{uuid}")]
 
-        public async Task<ActionResult<Institution>> GetInstitution(int id)
+        public async Task<ActionResult<Institution>> GetInstitution(Guid uuid)
         {
             var institutions = await _context.Institutions.FindAsync();
 
@@ -44,11 +44,11 @@ namespace WebApiViejaCero.Controllers
 
         //PUT api/Institutions
 
-        [HttpPut("{id}")]
+        [HttpPut("{uuid}")]
 
-        public async Task<IActionResult> PutInstitution(int id, Institution institution)
+        public async Task<IActionResult> PutInstitution(Guid uuid, Institution institution)
         {
-            if (id != institution.Id)
+            if (uuid != institution.Uuid)
             {
                 return BadRequest();
             }
@@ -61,7 +61,7 @@ namespace WebApiViejaCero.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProvinceExists(id))
+                if (!InstitutionExists(uuid))
                 {
                     return NotFound();
                 }
@@ -83,16 +83,16 @@ namespace WebApiViejaCero.Controllers
             _context.Institutions.Add(institution);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInstitution", new {id = institution.Id}, institution);
+            return CreatedAtAction("GetInstitution", new {uuid = institution.Uuid}, institution);
         }
 
         //DELETE api/Institutions/5
 
         [HttpDelete("{id}")]
 
-        public async Task<IActionResult> DeleteInstitution(int id)
+        public async Task<IActionResult> DeleteInstitution(Guid uuid)
         {
-            var institution = await _context.Institutions.FindAsync(id);
+            var institution = await _context.Institutions.FindAsync(uuid);
 
             if (institution == null)
             {
@@ -105,9 +105,9 @@ namespace WebApiViejaCero.Controllers
             return NoContent();
         }
 
-        private bool ProvinceExists(int id)
+        private bool InstitutionExists(Guid uuid)
         {
-            return _context.Provinces.Any(e => e.Id == id);
+            return _context.Institutions.Any(e => e.Uuid == uuid);
         }
     }
 }

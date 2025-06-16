@@ -29,10 +29,10 @@ namespace WebApiViejaCero.Controllers
         }
 
         // GET: api/Provinces/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Province>> GetProvince(int id)
+        [HttpGet("{uuid}")]
+        public async Task<ActionResult<Province>> GetProvince(Guid uuid)
         {
-            var province = await _context.Provinces.FindAsync(id);
+            var province = await _context.Provinces.FindAsync(uuid);
 
             if (province == null)
             {
@@ -43,11 +43,11 @@ namespace WebApiViejaCero.Controllers
         }
 
         // PUT: api/Provinces/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProvince(int id, Province province)
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkuuid=2123754
+        [HttpPut("{uuid}")]
+        public async Task<IActionResult> PutProvince(Guid uuid, Province province)
         {
-            if (id != province.Id)
+            if (uuid != province.Uuid)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace WebApiViejaCero.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProvinceExists(id))
+                if (!ProvinceExists(uuid))
                 {
                     return NotFound();
                 }
@@ -74,21 +74,21 @@ namespace WebApiViejaCero.Controllers
         }
 
         // POST: api/Provinces
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkuuid=2123754
         [HttpPost]
         public async Task<ActionResult<Province>> PostProvince(Province province)
         {
             _context.Provinces.Add(province);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProvince", new { id = province.Id }, province);
+            return CreatedAtAction("GetProvince", new { uuid = province.Uuid }, province);
         }
 
         // DELETE: api/Provinces/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProvince(int id)
+        [HttpDelete("{uuid}")]
+        public async Task<IActionResult> DeleteProvince(Guid uuid)
         {
-            var province = await _context.Provinces.FindAsync(id);
+            var province = await _context.Provinces.FindAsync(uuid);
             if (province == null)
             {
                 return NotFound();
@@ -100,9 +100,9 @@ namespace WebApiViejaCero.Controllers
             return NoContent();
         }
 
-        private bool ProvinceExists(int id)
+        private bool ProvinceExists(Guid uuid)
         {
-            return _context.Provinces.Any(e => e.Id == id);
+            return _context.Provinces.Any(e => e.Uuid == uuid);
         }
     }
 }

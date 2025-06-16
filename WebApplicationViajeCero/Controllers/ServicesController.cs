@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using WebApplicationViajeCero.Context;
+using WebApplicationViajeCero.DTOs;
 using WebApplicationViajeCero.Models;
 
 namespace WebApiViejaCero.Controllers
@@ -31,11 +33,11 @@ namespace WebApiViejaCero.Controllers
 
         //GET api/Services/5
 
-        [HttpGet ("{id}")]
+        [HttpGet ("{uuid}")]
 
-        public async Task<ActionResult<Service>> GetService(int id)
+        public async Task<ActionResult<Service>> GetService(Guid uuid)
         {
-            var service = await _context.Services.FindAsync(id);
+            var service = await _context.Services.FindAsync(uuid);
 
             if (service == null)
             {
@@ -47,14 +49,17 @@ namespace WebApiViejaCero.Controllers
 
         //PUT api/Services/5
 
-        [HttpPut ("{id}")]
+        [HttpPut ("{uuid}")]
 
-        public async Task<IActionResult> PutService(int id, Service service)
+        public async Task<IActionResult> PutService(Guid uuid, UpdateServiceDTO service)
         {
-            if (id != service.Id)
-            {
-                return BadRequest();
-            }
+            var foundService = await _context.Services.FirstOrDefaultAsync(e => e.Uuid == uuid);
+
+            if (foundService == null) return NotFound("Service not found");
+
+            var institution = await _context.Institutions.FirstOrDefaultAsync(e => e.Uuid == service.InstitutionUuid);
+
+            if (institution == null) return NotFound("Institution not found");
 
             _context.Entry(service).State = EntityState.Modified;
 
@@ -64,9 +69,9 @@ namespace WebApiViejaCero.Controllers
             }
             catch (DbUpdateConcurrencyException) 
             {
-                if (!ServiceExists(id))
+                if (!ServiceExists(uuid))
                 {
-                    return NotFound(id);
+                    return NotFound(uuid);
                 }
                 else
                 {
@@ -81,21 +86,25 @@ namespace WebApiViejaCero.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult<Service>> PostService(Service service)
+        public async Task<ActionResult<CreateServiceDTO>> PostService(CreateServiceDTO service)
         {
-            _context.Services.Add(service);
+            var institution = await _context.Institutions.FirstOrDefaultAsync(e => e.Uuid == service.InstitutionUuid);
+
+            if (institution == null) return NotFound("Institution not found");
+
+            _context.Services.Add(new Service { Name = service.Name, InstitutionId = institution.Id});
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetService", new {id = service.Id}, service);
+            return Ok("Service created successfully");
         }
 
         //DELETE api/Services/5
 
         [HttpDelete]
 
-        public async Task<IActionResult> DeleteService(int id)
+        public async Task<IActionResult> DeleteService(Guid uuid)
         {
-            var service = await _context.Services.FindAsync(id);
+            var service = await _context.Services.FindAsync(uuid);
 
             if (service ==null)
             {
@@ -108,11 +117,9 @@ namespace WebApiViejaCero.Controllers
             return NoContent();
         }
 
-        private bool ServiceExists(int id)
+        private bool ServiceExists(Guid uuid)
         {
-            return _context.Requests.Any(e => e.Id == id);
+            return _context.Services.Any(e => e.Uuid == uuid);
         }
-
     }
-    
 }
