@@ -1,0 +1,154 @@
+[
+  {
+    "Name": "Ministerio de la Presidencia",
+    "Acronym": "MPres"
+  },
+  {
+    "Name": "Ministerio de Defensa",
+    "Acronym": "MD"
+  },
+  {
+    "Name": "Ministerio de Interior y Polic�a",
+    "Acronym": "MIP"
+  },
+  {
+    "Name": "Ministerio de Hacienda",
+    "Acronym": "MH"
+  },
+  {
+    "Name": "Ministerio de Educaci�n",
+    "Acronym": "MINERD"
+  },
+  {
+    "Name": "Ministerio de Educaci�n Superior, Ciencia y Tecnolog�a",
+    "Acronym": "MESCyT"
+  },
+  {
+    "Name": "Ministerio de Salud P�blica y Asistencia Social",
+    "Acronym": "MSPAS"
+  },
+  {
+    "Name": "Ministerio de Obras P�blicas y Comunicaciones",
+    "Acronym": "MOPC"
+  },
+  {
+    "Name": "Ministerio de Agricultura",
+    "Acronym": "MAG"
+  },
+  {
+    "Name": "Ministerio de Industria, Comercio y Mipymes",
+    "Acronym": "MICM"
+  },
+  {
+    "Name": "Ministerio de Turismo",
+    "Acronym": "MITUR"
+  },
+  {
+    "Name": "Ministerio de Medio Ambiente y Recursos Naturales",
+    "Acronym": "MIMARENA"
+  },
+  {
+    "Name": "Ministerio de la Mujer",
+    "Acronym": "MM"
+  },
+  {
+    "Name": "Ministerio de la Juventud",
+    "Acronym": "MJ"
+  },
+  {
+    "Name": "Ministerio de Econom�a, Planificaci�n y Desarrollo",
+    "Acronym": "MEPyD"
+  },
+  {
+    "Name": "Ministerio de Energ�a y Minas",
+    "Acronym": "MEM"
+  },
+  {
+    "Name": "Ministerio de Trabajo",
+    "Acronym": "MT"
+  },
+  {
+    "Name": "Ministerio de Relaciones Exteriores",
+    "Acronym": "MIREX"
+  },
+  {
+    "Name": "Ministerio de Cultura",
+    "Acronym": "MC"
+  },
+  {
+    "Name": "Ministerio de Vivienda y Edificaciones",
+    "Acronym": "MIVE"
+  },
+  {
+    "Name": "Procuradur�a General de la Rep�blica",
+    "Acronym": "PGR"
+  },
+  {
+    "Name": "Defensor del Pueblo",
+    "Acronym": "DP"
+  },
+  {
+    "Name": "Junta Central Electoral",
+    "Acronym": "JCE"
+  },
+  {
+    "Name": "C�mara de Cuentas de la Rep�blica Dominicana",
+    "Acronym": "CCRD"
+  },
+  {
+    "Name": "Banco Central de la Rep�blica Dominicana",
+    "Acronym": "BCRD"
+  },
+  {
+    "Name": "Superintendencia de Bancos",
+    "Acronym": "SB"
+  },
+  {
+    "Name": "Superintendencia de Pensiones (SIPEN)",
+    "Acronym": "SIPEN"
+  },
+  {
+    "Name": "Superintendencia de Salud y Riesgos Laborales",
+    "Acronym": "SISALRIL"
+  },
+  {
+    "Name": "Superintendencia de Seguros (SUPERSEGURO)",
+    "Acronym": "SUPERSEGURO"
+  },
+  {
+    "Name": "Superintendencia de Valores (SIV)",
+    "Acronym": "SIV"
+  },
+  {
+    "Name": "Direcci�n General de Impuestos Internos",
+    "Acronym": "DGII"
+  },
+  {
+    "Name": "Direcci�n Nacional de Control de Drogas",
+    "Acronym": "DNCD"
+  },
+  {
+    "Name": "Administradora de Subsidios Sociales",
+    "Acronym": "ADESS"
+  },
+  {
+    "Name": "Autoridad Portuaria Dominicana",
+    "Acronym": "APORDOM"
+  },
+  {
+    "Name": "Acuario Nacional",
+    "Acronym": "AN"
+  },
+  {
+    "Name": "Archivo General de la Naci�n",
+    "Acronym": "AGN"
+  },
+  {
+    "Name": "Oficina Nacional de Derecho de Autor",
+    "Acronym": "ONDA"
+  },
+  {
+    "Name": "Corporación acueducto y Alcantarillado de Santo Domingo",
+    "Acronym": "CAASD"
+  }
+]

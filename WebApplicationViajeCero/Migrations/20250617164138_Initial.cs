@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebApplicationViajeCero.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,7 +25,10 @@ namespace WebApplicationViajeCero.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Acronym = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateModificated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateDeleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,7 +44,10 @@ namespace WebApplicationViajeCero.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateModificated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateDeleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,7 +63,10 @@ namespace WebApplicationViajeCero.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateModificated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateDeleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -74,7 +83,10 @@ namespace WebApplicationViajeCero.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     InstitutionId = table.Column<int>(type: "int", nullable: false),
-                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateModificated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateDeleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -112,7 +124,10 @@ namespace WebApplicationViajeCero.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProvinceId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
-                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateModificated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateDeleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -144,7 +159,10 @@ namespace WebApplicationViajeCero.Migrations
                     Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ServiceId = table.Column<int>(type: "int", nullable: false),
                     ProvinceId = table.Column<int>(type: "int", nullable: false),
-                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                    Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateModificated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateDeleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {

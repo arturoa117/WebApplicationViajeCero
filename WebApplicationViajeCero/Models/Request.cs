@@ -22,7 +22,5 @@ namespace WebApplicationViajeCero.Models
         [Required]
         public int ProvinceId { get; set; }
         public Province Province { get; set; }
-
-
     }
 }
