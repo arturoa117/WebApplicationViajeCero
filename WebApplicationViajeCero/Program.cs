@@ -42,12 +42,20 @@ using (var scope = app.Services.CreateScope())
     RoleSeeder.Seed(context);
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var filePath = "C:\\Users\\Burocracia Cero\\source\\repos\\WebApplicationViajeCero\\WebApplicationViajeCero\\Seeders\\Data\\Reporte de Servicio por Institución.xlsx";
+    
+    ServicesSeeder.Seed(context, filePath);
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
 app.UseHttpsRedirection();
 

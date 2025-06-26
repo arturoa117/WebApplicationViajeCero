@@ -1,154 +1,560 @@
 [
   {
-    "Name": "Ministerio de la Presidencia",
-    "Acronym": "MPres"
-  },
-  {
-    "Name": "Ministerio de Defensa",
-    "Acronym": "MD"
-  },
-  {
-    "Name": "Ministerio de Interior y Polic�a",
-    "Acronym": "MIP"
-  },
-  {
-    "Name": "Ministerio de Hacienda",
-    "Acronym": "MH"
-  },
-  {
-    "Name": "Ministerio de Educaci�n",
-    "Acronym": "MINERD"
-  },
-  {
-    "Name": "Ministerio de Educaci�n Superior, Ciencia y Tecnolog�a",
-    "Acronym": "MESCyT"
-  },
-  {
-    "Name": "Ministerio de Salud P�blica y Asistencia Social",
-    "Acronym": "MSPAS"
-  },
-  {
-    "Name": "Ministerio de Obras P�blicas y Comunicaciones",
-    "Acronym": "MOPC"
-  },
-  {
-    "Name": "Ministerio de Agricultura",
-    "Acronym": "MAG"
-  },
-  {
-    "Name": "Ministerio de Industria, Comercio y Mipymes",
-    "Acronym": "MICM"
-  },
-  {
-    "Name": "Ministerio de Turismo",
-    "Acronym": "MITUR"
-  },
-  {
-    "Name": "Ministerio de Medio Ambiente y Recursos Naturales",
-    "Acronym": "MIMARENA"
-  },
-  {
-    "Name": "Ministerio de la Mujer",
-    "Acronym": "MM"
-  },
-  {
-    "Name": "Ministerio de la Juventud",
-    "Acronym": "MJ"
-  },
-  {
-    "Name": "Ministerio de Econom�a, Planificaci�n y Desarrollo",
-    "Acronym": "MEPyD"
-  },
-  {
-    "Name": "Ministerio de Energ�a y Minas",
-    "Acronym": "MEM"
+    "Name": "Consejo Nacional de Zonas Francas de Exportación",
+    "Acronym": "CNZFE"
   },
   {
     "Name": "Ministerio de Trabajo",
     "Acronym": "MT"
   },
   {
-    "Name": "Ministerio de Relaciones Exteriores",
-    "Acronym": "MIREX"
+    "Name": "Dirección General de Minería",
+    "Acronym": "DGM"
   },
   {
-    "Name": "Ministerio de Cultura",
-    "Acronym": "MC"
+    "Name": "Instituto Dominicano de las Telecomunicaciones",
+    "Acronym": "INDOTEL"
   },
   {
-    "Name": "Ministerio de Vivienda y Edificaciones",
-    "Acronym": "MIVE"
+    "Name": "Consejo Nacional para el Cambio Climático y Mecanismo de Desarrollo Limpio",
+    "Acronym": "CNCCMDL"
   },
   {
-    "Name": "Procuradur�a General de la Rep�blica",
-    "Acronym": "PGR"
+    "Name": "Dirección General de Bellas Artes",
+    "Acronym": "DGBA"
   },
   {
-    "Name": "Defensor del Pueblo",
-    "Acronym": "DP"
+    "Name": "Ayuntamiento Municipal de Santo Domingo Este",
+    "Acronym": "ASDE"
   },
   {
-    "Name": "Junta Central Electoral",
-    "Acronym": "JCE"
+    "Name": "Dirección General de Cine",
+    "Acronym": "DGCINE"
   },
   {
-    "Name": "C�mara de Cuentas de la Rep�blica Dominicana",
-    "Acronym": "CCRD"
+    "Name": "Ministerio de Agricultura",
+    "Acronym": "AGRICULTURA"
   },
   {
-    "Name": "Banco Central de la Rep�blica Dominicana",
-    "Acronym": "BCRD"
+    "Name": "Jardín Botánico Nacional Dr. Rafael Ma. Moscoso RD",
+    "Acronym": "JBN"
+  },
+
+
+  {
+    "Name": "Dirección General de Información y Defensa de los Afiliados a la Seguridad Social",
+    "Acronym": "DIDA"
   },
   {
-    "Name": "Superintendencia de Bancos",
-    "Acronym": "SB"
+    "Name": "Oficina Nacional de Estadística",
+    "Acronym": "ONE"
   },
   {
-    "Name": "Superintendencia de Pensiones (SIPEN)",
-    "Acronym": "SIPEN"
+    "Name": "Instituto de Desarrollo y Crédito Cooperativo",
+    "Acronym": "IDECOOP"
   },
   {
-    "Name": "Superintendencia de Salud y Riesgos Laborales",
-    "Acronym": "SISALRIL"
+    "Name": "Instituto Nacional de Aguas Potables y Alcantarillados",
+    "Acronym": "INAPA"
   },
   {
-    "Name": "Superintendencia de Seguros (SUPERSEGURO)",
-    "Acronym": "SUPERSEGURO"
+    "Name": "Ayuntamiento Municipal de Santo Domingo Oeste",
+    "Acronym": "ASDO"
   },
   {
-    "Name": "Superintendencia de Valores (SIV)",
-    "Acronym": "SIV"
+    "Name": "Corporación del Acueducto y Alcantarillado de La Vega",
+    "Acronym": "CORAAVEGA"
   },
   {
-    "Name": "Direcci�n General de Impuestos Internos",
-    "Acronym": "DGII"
+    "Name": "Corporación del Acueducto y Alcantarillado de Moca",
+    "Acronym": "CORAAMOCA"
   },
   {
-    "Name": "Direcci�n Nacional de Control de Drogas",
-    "Acronym": "DNCD"
+    "Name": "Corporación de Acueductos y Alcantarillado de Santo Domingo",
+    "Acronym": "CAASD"
   },
   {
-    "Name": "Administradora de Subsidios Sociales",
-    "Acronym": "ADESS"
+    "Name": "Corporación del Acueducto y Alcantarillado de Santiago",
+    "Acronym": "CORAASAN"
   },
   {
-    "Name": "Autoridad Portuaria Dominicana",
-    "Acronym": "APORDOM"
+    "Name": "Ministerio de Educación Superior, Ciencia y Tecnología",
+    "Acronym": "MESCYT"
   },
   {
-    "Name": "Acuario Nacional",
-    "Acronym": "AN"
+    "Name": "Instituto Nacional de Recursos Hidráulicos",
+    "Acronym": "INDRHI"
   },
   {
-    "Name": "Archivo General de la Naci�n",
-    "Acronym": "AGN"
+    "Name": "Centro de Atención Integral para la Discapacidad",
+    "Acronym": "CAID"
+  },
+  {
+    "Name": "Universidad Autónoma de Santo Domingo",
+    "Acronym": "UASD"
   },
   {
     "Name": "Oficina Nacional de Derecho de Autor",
     "Acronym": "ONDA"
   },
   {
-    "Name": "Corporación acueducto y Alcantarillado de Santo Domingo",
-    "Acronym": "CAASD"
+    "Name": "Superintendencia del Mercado de Valores",
+    "Acronym": "SIMV"
+  },
+  {
+    "Name": "Conservatorio Nacional de Música",
+    "Acronym": "CNM"
+  },
+  {
+    "Name": "Ministerio de la Vivienda y Edificaciones",
+    "Acronym": "MIVED"
+  },
+  {
+    "Name": "Instituto Nacional de Bienestar Magisterial",
+    "Acronym": "INABIMA"
+  },
+  {
+    "Name": "Superintendencia de Vigilancia y Seguridad Privada",
+    "Acronym": "SVSP"
+  },
+  {
+    "Name": "Junta de Retiro y Fondo de Pensiones de las Fuerzas Armadas",
+    "Acronym": "JRFP-FFAA"
+  },
+  {
+    "Name": "Mercados Dominicanos de Abastos Agropecuario",
+    "Acronym": "MERCADOM"
+  },
+  {
+    "Name": "Ministerio de Medio Ambiente y Recursos Naturales",
+    "Acronym": "MIMARENA"
+  },
+  {
+    "Name": "Cuerpo Especializado de Control de Combustibles",
+    "Acronym": "CECCOM"
+  },
+  {
+    "Name": "Centro de Exportación e Inversión de la República Dominicana",
+    "Acronym": "PRODOMINICANA"
+  },
+  {
+    "Name": "Consejo Nacional de Competitividad",
+    "Acronym": ""
+  },
+  {
+    "Name": "Cuerpo Especializado en Seguridad Fronteriza Terrestre",
+    "Acronym": "CESFRONT"
+  },
+  {
+    "Name": "Empresa Distribuidora de Electricidad del Norte",
+    "Acronym": "EDENORTE"
+  },
+  {
+    "Name": "Ministerio de Energía y Minas",
+    "Acronym": "MEM"
+  },
+  {
+    "Name": "Superintendencia de Seguros",
+    "Acronym": "SIS"
+  },
+  {
+    "Name": "Cuerpo Especializado para la Seguridad del Metro",
+    "Acronym": "CESMET"
+  },
+  {
+    "Name": "Ministerio de Turismo",
+    "Acronym": "MITUR"
+  },
+  {
+    "Name": "Departamento Aeroportuario",
+    "Acronym": "DA"
+  },
+  {
+    "Name": "Parque Zoológico Nacional",
+    "Acronym": "ZOODOM"
+  },
+  {
+    "Name": "Dirección General de Bienes Nacionales",
+    "Acronym": "DGBN"
+  },
+  {
+    "Name": "Dirección General de Medicamentos, Alimentos y Productos Sanitarios",
+    "Acronym": "DIGEMAPS"
+  },
+  {
+    "Name": "Instituto Dominicano de Meteorología",
+    "Acronym": "INDOMET"
+  },
+  {
+    "Name": "Ministerio de Hacienda",
+    "Acronym": "MH"
+  },
+  {
+    "Name": "Cámara de Comercio y Producción de Santo Domingo",
+    "Acronym": "CCPSD"
+  },
+  {
+    "Name": "Instituto Dominicano de Aviación Civil",
+    "Acronym": "IDAC"
+  },
+  {
+    "Name": "Superintendencia de Electricidad",
+    "Acronym": "SIE"
+  },
+  {
+    "Name": "Dirección General de Aduanas",
+    "Acronym": "DGA"
+  },
+  {
+    "Name": "Dirección General de Impuestos Internos",
+    "Acronym": "DGII"
+  },
+  {
+    "Name": "Centro de Desarrollo y Competitividad Industrial",
+    "Acronym": "PROINDUSTRIA"
+  },
+  {
+    "Name": "Empresa de Transmision Eléctrica Dominicana",
+    "Acronym": "ETED"
+  },
+  {
+    "Name": "Dirección General de Ganadería",
+    "Acronym": "DIGEGA"
+  },
+  {
+    "Name": "Registro Inmobiliario",
+    "Acronym": "RI"
+  },
+  {
+    "Name": "Ministerio de Defensa de República Dominicana",
+    "Acronym": "MIDE"
+  },
+  {
+    "Name": "Ministerio de Interior y Policía",
+    "Acronym": "MIP"
+  },
+  {
+    "Name": "Ministerio de Educación de la República Dominicana",
+    "Acronym": "MINERD"
+  },
+  {
+    "Name": "Instituto Nacional de Administración Publica",
+    "Acronym": "INAP"
+  },
+  {
+    "Name": "Procuraduría General de la República",
+    "Acronym": "PGR"
+  },
+  {
+    "Name": "Biblioteca Nacional Pedro Henríquez Ureña",
+    "Acronym": "BNPHU"
+  },
+  {
+    "Name": "Museo Nacional de Historia Natural Prof. Eugenio de Jesus Marcano",
+    "Acronym": "MNHN"
+  },
+  {
+    "Name": "Comisión Nacional de Energía",
+    "Acronym": "CNE"
+  },
+  {
+    "Name": "Instituto Dominicano de Evaluación e Investigación de la Calidad Educativa",
+    "Acronym": "IDEICE"
+  },
+  {
+    "Name": "Ministerio de Economía, Planificación y Desarrollo",
+    "Acronym": "MEPyD"
+  },
+  {
+    "Name": "Oficina Nacional de la Propiedad Industrial",
+    "Acronym": "ONAPI"
+  },
+  {
+    "Name": "Hospital Materno Dr. Reynaldo Almanzar",
+    "Acronym": "HMRA"
+  },
+  {
+    "Name": "Empresa Distribuidora de Electricidad del Este",
+    "Acronym": "EDEESTE"
+  },
+  {
+    "Name": "Dirección General de Ética e Integridad Gubernamental",
+    "Acronym": "DIGEIG"
+  },
+  {
+    "Name": "Instituto de Auxilios y Viviendas",
+    "Acronym": "INAVI"
+  },
+  {
+    "Name": "Instituto Nacional de Tránsito y Transporte Terrestre",
+    "Acronym": "INTRANT"
+  },
+  {
+    "Name": "Oficina Metropolitana de Servicios de Autobuses",
+    "Acronym": "OMSA"
+  },
+  {
+    "Name": "Ministerio de Obras Públicas y Comunicaciones",
+    "Acronym": "MOPC"
+  },
+  {
+    "Name": "Ministerio de Deportes y Recreación",
+    "Acronym": "MIDEREC"
+  },
+  {
+    "Name": "Servicio Nacional de Salud",
+    "Acronym": "SNS"
+  },
+  {
+    "Name": "Programa de Medicamentos Esenciales y Central de Apoyo Logístico",
+    "Acronym": "PROMESECAL"
+  },
+  {
+    "Name": "Seguro Nacional de Salud",
+    "Acronym": "SENASA"
+  },
+  {
+    "Name": "Defensa Civil Dominicana",
+    "Acronym": "DCD"
+  },
+  {
+    "Name": "Tesorería Nacional",
+    "Acronym": "TN"
+  },
+  {
+    "Name": "Superintendencia de Bancos de la Republica Dominicana",
+    "Acronym": "SIB"
+  },
+  {
+    "Name": "Consulado General de la Republica Dominicana en Madrid Ministerio de Relaciones Exteriores",
+    "Acronym": "CGRDM"
+  },
+  {
+    "Name": "Ministerio de la Mujer",
+    "Acronym": "MMUJER"
+  },
+  {
+    "Name": "Dirección General de Migración",
+    "Acronym": "DGM"
+  },
+  {
+    "Name": "Dirección General de Pasaportes",
+    "Acronym": "DGP"
+  },
+  {
+    "Name": "Corporación de Fomento de la Industria Hotelera y Desarrollo del Turismo",
+    "Acronym": "CORPHOTELS"
+  },
+  {
+    "Name": "Empresa Distribuidora de Electricidad del Sur",
+    "Acronym": "EDESUR"
+  },
+  {
+    "Name": "Consejo Nacional de la Persona Envejeciente",
+    "Acronym": "CONAPE"
+  },
+  {
+    "Name": "Dirección General de Desarrollo de la Comunidad",
+    "Acronym": "DGDC"
+  },
+  {
+    "Name": "Fuerza Aerea de la Republica Dominicana",
+    "Acronym": "FARD"
+  },
+  {
+    "Name": "Servicio Geológico Nacional",
+    "Acronym": "SGN"
+  },
+  {
+    "Name": "Gabinete Política Social",
+    "Acronym": "GCPS"
+  },
+  {
+    "Name": "Supérate",
+    "Acronym": ""
+  },
+  {
+    "Name": "Dirección General de Riesgos Agropecuarios",
+    "Acronym": "DIGERA"
+  },
+  {
+    "Name": "Contraloría General de la República",
+    "Acronym": "CGR"
+  },
+  {
+    "Name": "Corporación de Acueductos y Alcantarillados de Puerto Plata",
+    "Acronym": "CORAAPPLATA"
+  },
+  {
+    "Name": "Oficina Nacional de Evaluación Sísmica y Vulnerabilidad de Infraestructura y Edificaciones",
+    "Acronym": "ONESVIE"
+  },
+  {
+    "Name": "Ministerio Administrativo de la Presidencia",
+    "Acronym": "MAPRE"
+  },
+  {
+    "Name": "Ministerio de Administración Pública",
+    "Acronym": "MAP"
+  },
+  {
+    "Name": "Organismo Dominicano de Acreditación",
+    "Acronym": ""
+  },
+  {
+    "Name": "Instituto Nacional de Migración",
+    "Acronym": "INM"
+  },
+  {
+    "Name": "Cuerpo Especializado en Seguridad Aeroportuaria y la Aviación Civil",
+    "Acronym": "CESAC"
+  },
+  {
+    "Name": "Instituto Nacional de Protección de los Derechos del Consumidor",
+    "Acronym": "PRO CONSUMIDOR"
+  },
+  {
+    "Name": "Instituto de Estabilización de Precios",
+    "Acronym": "INESPRE"
+  },
+  {
+    "Name": "Dirección General de Contrataciones Públicas",
+    "Acronym": "DGCP"
+  },
+  {
+    "Name": "Ministerio de la Presidencia",
+    "Acronym": "MINPRE"
+  },
+  {
+    "Name": "Comedores Económicos del Estado Dominicano",
+    "Acronym": "CEED"
+  },
+  {
+    "Name": "Industria Nacional de la Aguja",
+    "Acronym": "INAGUJA"
+  },
+  {
+    "Name": "Instituto Postal Dominicano",
+    "Acronym": "INPOSDOM"
+  },
+  {
+    "Name": "Dirección General de Crédito Publico",
+    "Acronym": "DGCP"
+  },
+  {
+    "Name": "Alcaldía del Distrito Nacional",
+    "Acronym": "ADN"
+  },
+  {
+    "Name": "Ministerio de la Juventud",
+    "Acronym": "MJ"
+  },
+  {
+    "Name": "Ministerio de Cultura",
+    "Acronym": "MINC"
+  },
+  {
+    "Name": "Ministerio de Industria, Comercio y Mipymes",
+    "Acronym": "MICM"
+  },
+  {
+    "Name": "Ministerio de Relaciones Exteriores de la República Dominicana",
+    "Acronym": "MIREX"
+  },
+  {
+    "Name": "Ministerio de Salud Pública y Asistencia Social",
+    "Acronym": "MSP"
+  },
+  {
+    "Name": "Oficina para el Reordenamiento del Transporte",
+    "Acronym": ""
+  },
+  {
+    "Name": "Ayuntamiento Municipal de Puerto Plata",
+    "Acronym": "AMPP"
+  },
+  {
+    "Name": "Ventanilla Única de Formalización",
+    "Acronym": "VUF"
+  },
+  {
+    "Name": "Dirección Nacional de Patrimonio Monumental",
+    "Acronym": "DNPM"
+  },
+  {
+    "Name": "Ayuntamiento Municipal de Villa Tapia",
+    "Acronym": "AVT"
+  },
+  {
+    "Name": "Ayuntamiento Municipal de Baní",
+    "Acronym": "AMB"
+  },
+  {
+    "Name": "Superintendencia de Salud y Riesgos Laborales",
+    "Acronym": "SISALRIL"
+  },
+  {
+    "Name": "Dirección General de Jubilaciones y Pensiones a Cargo del Estado",
+    "Acronym": "DGJP"
+  },
+  {
+    "Name": "Plan Nacional de Vivienda Familia Feliz",
+    "Acronym": "VIVIENDA FELIZ"
+  },
+  {
+    "Name": "Administradora de Subsidios Sociales",
+    "Acronym": "ADESS"
+  },
+  {
+    "Name": "Tesorería de la Seguridad Social",
+    "Acronym": "TSS"
+  },
+  {
+    "Name": "Ayuntamiento Municipal de Santo Domingo Norte",
+    "Acronym": "ASDN"
+  },
+  {
+    "Name": "Instituto Nacional de Formación y Capacitación del Magisterio",
+    "Acronym": "INAFOCAM"
+  },
+  {
+    "Name": "Instituto Cartografico Militar",
+    "Acronym": "ICM"
+  },
+  {
+    "Name": "Consejo Dominicano de Pesca y Acuicultura",
+    "Acronym": "CODOPESCA"
+  },
+  {
+    "Name": "Instituto del Tabaco de la República Dominicana",
+    "Acronym": "INTABACO"
+  },
+  {
+    "Name": "Consejo Nacional de Seguridad Social",
+    "Acronym": "CNSS"
+  },
+  {
+    "Name": "Dirección General de Seguridad de Tránsito y Transporte Terrestre",
+    "Acronym": "DIGESETT"
+  },
+  {
+    "Name": "Dirección Central de Policía de Turismo",
+    "Acronym": "POLITUR"
+  },
+  {
+    "Name": "Consejo Nacional de Discapacidad",
+    "Acronym": "CONADIS"
+  },
+  {
+    "Name": "Comisión Nacional de Espectáculos Públicos y Radiofonía",
+    "Acronym": "CNEPR"
+  },
+  {
+    "Name": "Policía Nacional",
+    "Acronym": "PN"
+  },
+  {
+    "Name": "Oficina Gubernamental de Tecnologías de la Información y Comunicación",
+    "Acronym": "OGTIC"
   }
 ]
