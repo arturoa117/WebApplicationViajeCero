@@ -4,18 +4,18 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace WebApplicationViajeCero.Controllers
+namespace WebApplicationViajeCero.Models
 {
     public class TokenJWT
     {
         private readonly IConfiguration _config;
 
-        public TokenJWT (IConfiguration config)
+        public TokenJWT(IConfiguration config)
         {
             _config = config;
         }
 
-        public string GenerateToken(string Identification, string role) 
+        public string GenerateToken(string Identification, string role)
         {
             var claims = new[]
             {
@@ -24,7 +24,7 @@ namespace WebApplicationViajeCero.Controllers
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-            var creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
                     issuer: _config["Jwt:Issuer"],
