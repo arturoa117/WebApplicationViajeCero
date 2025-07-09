@@ -1,29 +1,33 @@
-﻿using WebApplicationViajeCero.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using WebApplicationViajeCero.Models;
 
 namespace WebApplicationViajeCero.DTOs
 {
     public class CreateUserDTO
     {
-        
-        public String? Identification { get; set; } = String.Empty;
-        
-        public String? Name { get; set; } = String.Empty;
+        [Required]
+        public string Identification { get; set; } = String.Empty;
 
-        public String? LastName { get; set; } = String.Empty;
+        [Required]
+        public string Name { get; set; } = String.Empty;
 
-        public String? Email { get; set; } = String.Empty;
+        [Required]
+        public string LastName { get; set; } = String.Empty;
+        [Required]
 
-        public String? CellPhone { get; set; } = String.Empty;
+        public string Email { get; set; } = String.Empty;
+        [Required]
 
-        public String? Zone { get; set; } = String.Empty;
+        public string CellPhone { get; set; } = String.Empty;
+        [Required]
 
-        public String? UserName { get; set; } = String.Empty;
+        public string Password { get; set; } = String.Empty;
 
-        public String? Password { get; set; } = String.Empty;
+        [Required]
+        public Guid ProvinceUuid { get; set; } = Guid.Empty;
 
-        public int? ProvinceId { get; set; } = 0;
-
-        public int? RoleId { get; set; } = 0;
+        [Required]
+        public Guid RoleUuid { get; set; } = Guid.Empty;
 
 
 

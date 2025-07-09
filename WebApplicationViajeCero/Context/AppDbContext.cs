@@ -16,6 +16,10 @@ namespace WebApplicationViajeCero.Context
         */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Province>()
+                .Property(p => p.Zone)
+                .HasConversion<string>();
+
             base.OnModelCreating(modelBuilder);
         }
 

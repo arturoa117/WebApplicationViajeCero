@@ -79,6 +79,10 @@ namespace WebApplicationViajeCero.Migrations
                     b.Property<Guid>("Uuid")
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("Zone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.ToTable("Provinces");
@@ -241,16 +245,8 @@ namespace WebApplicationViajeCero.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<Guid>("Uuid")
                         .HasColumnType("char(36)");
-
-                    b.Property<string>("Zone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

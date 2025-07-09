@@ -1,34 +1,130 @@
 [
-  "Distrito Nacional",
-  "Azua",
-  "Bahoruco",
-  "Barahona",
-  "Duarte",
-  "Elías Piña",
-  "Dajabón",
-  "El Seibo",
-  "Espaillat",
-  "Independencia",
-  "La Altagracia",
-  "La Romana",
-  "La Vega",
-  "María Trinidad Sánchez",
-  "Monte Cristi",
-  "Peravia",
-  "Pedernales",
-  "Puerto Plata",
-  "Salcedo",
-  "Samaná",
-  "San Cristóbal",
-  "San Juan",
-  "San Pedro de Macoris",
-  "Sánchez Ramírez",
-  "Santiago",
-  "Santiago Rodríguez",
-  "Valverde",
-  "Monseñor Nouel",
-  "Monte Plata",
-  "Hato Mayor",
-  "San José de Ocoa",
-  "Santo Domingo"
+  {
+    "Name": "Distrito Nacional",
+    "Zone": "Metropolitana"
+  },
+  {
+    "Name": "Azua",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "Bahoruco",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "Barahona",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "Duarte",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Elías Piña",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "Dajabón",
+    "Zone": "Noroeste"
+  },
+  {
+    "Name": "El Seibo",
+    "Zone": "Este"
+  },
+  {
+    "Name": "Espaillat",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Independencia",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "La Altagracia",
+    "Zone": "Este"
+  },
+  {
+    "Name": "La Romana",
+    "Zone": "Este"
+  },
+  {
+    "Name": "La Vega",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "María Trinidad Sánchez",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Monte Cristi",
+    "Zone": "Noroeste"
+  },
+  {
+    "Name": "Peravia",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "Pedernales",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "Puerto Plata",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Salcedo",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Samaná",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "San Cristóbal",
+    "Zone": "Metropolitana"
+  },
+  {
+    "Name": "San Juan",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "San Pedro de Macoris",
+    "Zone": "Este"
+  },
+  {
+    "Name": "Sánchez Ramírez",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Santiago",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Santiago Rodríguez",
+    "Zone": "Noroeste"
+  },
+  {
+    "Name": "Valverde",
+    "Zone": "Noroeste"
+  },
+  {
+    "Name": "Monseñor Nouel",
+    "Zone": "Norte"
+  },
+  {
+    "Name": "Monte Plata",
+    "Zone": "Este"
+  },
+  {
+    "Name": "Hato Mayor",
+    "Zone": "Este"
+  },
+  {
+    "Name": "San José de Ocoa",
+    "Zone": "Sur"
+  },
+  {
+    "Name": "Santo Domingo",
+    "Zone": "Metropolitana"
+  }
 ]

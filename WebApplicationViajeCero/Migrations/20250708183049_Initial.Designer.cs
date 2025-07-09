@@ -12,7 +12,7 @@ using WebApplicationViajeCero.Context;
 namespace WebApplicationViajeCero.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250617164138_Initial")]
+    [Migration("20250708183049_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -81,6 +81,10 @@ namespace WebApplicationViajeCero.Migrations
 
                     b.Property<Guid>("Uuid")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("Zone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -244,16 +248,8 @@ namespace WebApplicationViajeCero.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<Guid>("Uuid")
                         .HasColumnType("char(36)");
-
-                    b.Property<string>("Zone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

@@ -19,7 +19,7 @@ namespace WebApplicationViajeCero.Seeders.Seeds
 
             string json = File.ReadAllText(filePath, System.Text.Encoding.UTF8);
 
-            var provincesFromJson = JsonSerializer.Deserialize<List<string>>(json, new JsonSerializerOptions
+            var provincesFromJson = JsonSerializer.Deserialize<List<Province>>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
             });
@@ -28,15 +28,16 @@ namespace WebApplicationViajeCero.Seeders.Seeds
                 return;
 
             var existingProvinceNames = context.Provinces
-                .Select(p => p.Name)
-                .ToHashSet(); 
+                            .Select(p => p.Name)
+                            .ToHashSet();
 
             var newProvinces = provincesFromJson
-                .Where(p => !existingProvinceNames.Contains(p))
+                .Where(p => !existingProvinceNames.Contains(p.Name))
+                .Select(p => new Province { Name = p.Name, Zone = p.Zone })
                 .ToList();
 
             var newProvinceEntities = newProvinces
-                .Select(name => new Province { Name = name })
+                .Select(p => new Province { Name = p.Name, Zone = p.Zone })
                 .ToList();
 
             context.Provinces.AddRange(newProvinceEntities);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BCrypt.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -79,17 +80,21 @@ namespace WebApiViejaCero.Controllers
         public async Task<ActionResult<CreateUserDTO>> PostUser(CreateUserDTO userDto)
         {
             if (await _context.Users.AnyAsync(u => u.Identification == userDto.Identification))
-                return BadRequest("La cédula ya está registrada.");
-            if (await _context.Users.AnyAsync(u => u.UserName == userDto.UserName))
-                return BadRequest("El nombre de usuario ya existe.");
+                return BadRequest(new
+                {
+                    error = new { message = "La cédula ya está registrada." }
+                });
+        
             if (await _context.Users.AnyAsync(u => u.Email == userDto.Email))
                 return BadRequest("El correo ya está registrado.");
 
-            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Id == userDto.ProvinceId);
+            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Uuid == userDto.ProvinceUuid);
             if (province == null) return BadRequest("Provincia no válida.");
 
-            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Id == userDto.RoleId);
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Uuid == userDto.RoleUuid);
             if (role == null) return BadRequest("Rol no válido.");
+
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
 
             var newUser = new User
             {
@@ -98,9 +103,7 @@ namespace WebApiViejaCero.Controllers
                 LastName = userDto.LastName,
                 Email = userDto.Email,
                 CellPhone = userDto.CellPhone,
-                Zone = userDto.Zone,
-                UserName = userDto.UserName,
-                Password = userDto.Password, 
+                Password = hashedPassword, 
                 ProvinceId = province.Id,
                 RoleId = role.Id
             };

@@ -30,7 +30,7 @@ namespace WebApplicationViajeCero.Models
                     issuer: _config["Jwt:Issuer"],
                     audience: _config["Jwt:Audience"],
                     claims: claims,
-                    expires: DateTime.UtcNow.AddMinutes(30),
+                    expires: DateTime.UtcNow.AddDays(1),
                     signingCredentials: creds
 
                 );
