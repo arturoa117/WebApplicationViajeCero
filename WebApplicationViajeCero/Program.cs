@@ -67,9 +67,9 @@ using (var scope = app.Services.CreateScope())
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    var filePath = "C:\\Users\\Burocracia Cero\\source\\repos\\WebApplicationViajeCero\\WebApplicationViajeCero\\Seeders\\Data\\Reporte de Servicio por Institución.xlsx";
+    //var filePath = "C:\\Users\\Burocracia Cero\\source\\repos\\WebApplicationViajeCero\\WebApplicationViajeCero\\Seeders\\Data\\Reporte de Servicio por Institución.xlsx";
     
-    ServicesSeeder.Seed(context, filePath);
+    ServicesSeeder.Seed(context);
 }
 
 // Configure the HTTP request pipeline.

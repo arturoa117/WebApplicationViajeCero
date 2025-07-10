@@ -10,9 +10,13 @@ namespace WebApplicationViajeCero.Seeders.Seeds
 {
     public class ServicesSeeder
     {
-        public static void Seed(AppDbContext context, string excelFilePath)
+        public static void Seed(AppDbContext context)
         {
-                if (context.Services.Any()) return; 
+            string excelFilePath = Path.GetFullPath(
+                Path.Combine(Directory.GetCurrentDirectory(), "Seeders", "Data", "Reporte de Servicio por Institución.xlsx")
+            );
+
+            if (context.Services.Any()) return; 
 
                 var institutions = context.Institutions.ToList();
                 var services = new List<Service>();
