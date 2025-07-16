@@ -125,7 +125,7 @@ namespace WebApiViejaCero.Controllers
 
         public async Task<IActionResult> DeleteInstitution(Guid uuid)
         {
-            var institution = await _context.Institutions.FindAsync(uuid);
+            var institution = await _context.Institutions.FirstOrDefaultAsync(i => i.Uuid == uuid);
 
             if (institution == null)
             {

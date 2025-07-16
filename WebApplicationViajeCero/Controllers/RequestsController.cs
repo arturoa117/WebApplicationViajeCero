@@ -133,7 +133,7 @@ namespace WebApiViejaCero.Controllers
         [HttpDelete("{uuid}")]
         public async Task<IActionResult> DeleteRequest(Guid uuid)
         {
-            var request = await _context.Requests.FindAsync(uuid);
+            var request = await _context.Requests.FirstOrDefaultAsync(r => r.Uuid == uuid);
             if (request == null)
             {
                 return NotFound();

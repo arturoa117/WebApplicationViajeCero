@@ -149,7 +149,7 @@ namespace WebApiViejaCero.Controllers
 
         public async Task<IActionResult> DeleteService(Guid uuid)
             {
-                var service = await _context.Services.FindAsync(uuid);
+            var service = await _context.Services.FirstOrDefaultAsync(se => se.Uuid == uuid);
 
                 if (service == null)
                 {
