@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using MySqlX.XDevAPI.Common;
 using System;
 using WebApplicationViajeCero.Context;
 using WebApplicationViajeCero.DTOs;
@@ -63,10 +64,17 @@ namespace WebApiViejaCero.Controllers
                     PageSize = pageSize,
                     Data = services
                 };
-
                 return Ok(result);
-
             }
+
+            return Ok(new PagedResult<GetServiceDTO>
+            {
+                Total = 0,
+                Page = page,
+                PageSize = pageSize,
+                Data = new List<GetServiceDTO>()
+            });
+        }
 
             //GET api/Services/5
 
