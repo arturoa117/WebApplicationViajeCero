@@ -13,9 +13,6 @@ namespace WebApplicationViajeCero.Models
         public char Sex { get; set; }
 
         [Required]
-        public DateTime Created { get; set; }
-
-        [Required]
         public int ServiceId { get; set; }
         public Service Service { get; set; }
 

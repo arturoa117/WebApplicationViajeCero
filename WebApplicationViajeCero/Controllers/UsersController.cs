@@ -77,32 +77,32 @@ namespace WebApiViejaCero.Controllers
 
         // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<CreateUserDTO>> PostUser(CreateUserDTO userDto)
+        public async Task<ActionResult<CreateUserDTO>> PostUser(CreateUserDTO userDTO)
         {
-            if (await _context.Users.AnyAsync(u => u.Identification == userDto.Identification))
+            if (await _context.Users.AnyAsync(u => u.Identification == userDTO.Identification))
                 return BadRequest(new
                 {
                     error = new { message = "La cédula ya está registrada." }
                 });
         
-            if (await _context.Users.AnyAsync(u => u.Email == userDto.Email))
+            if (await _context.Users.AnyAsync(u => u.Email == userDTO.Email))
                 return BadRequest("El correo ya está registrado.");
 
-            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Uuid == userDto.ProvinceUuid);
+            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Uuid == userDTO.ProvinceUuid);
             if (province == null) return BadRequest("Provincia no válida.");
 
-            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Uuid == userDto.RoleUuid);
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Description == userDTO.Role);
             if (role == null) return BadRequest("Rol no válido.");
 
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(userDTO.Password);
 
             var newUser = new User
             {
-                Identification = userDto.Identification,
-                Name = userDto.Name,
-                LastName = userDto.LastName,
-                Email = userDto.Email,
-                CellPhone = userDto.CellPhone,
+                Identification = userDTO.Identification,
+                Name = userDTO.Name,
+                LastName = userDTO.LastName,
+                Email = userDTO.Email,
+                CellPhone = userDTO.CellPhone,
                 Password = hashedPassword, 
                 ProvinceId = province.Id,
                 RoleId = role.Id
@@ -111,7 +111,7 @@ namespace WebApiViejaCero.Controllers
             _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(PostUser), new { id = newUser.Id }, userDto);
+            return CreatedAtAction(nameof(PostUser), new { id = newUser.Id }, userDTO);
         }
 
         // DELETE: api/Users/5

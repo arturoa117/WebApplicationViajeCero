@@ -10,6 +10,15 @@ using WebApplicationViajeCero.Seeders.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowCors",
+                            builder =>
+                            {
+                                builder.WithOrigins("http://localhost").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                            });
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ApplicationBuilder>();
@@ -80,6 +89,8 @@ if (app.Environment.IsDevelopment())
     }
 
 builder.Services.AddAuthorization();
+
+app.UseCors("AllowCors");
 
 app.UseHttpsRedirection();
 

@@ -27,7 +27,7 @@ namespace WebApplicationViajeCero.DTOs
         public Guid ProvinceUuid { get; set; } = Guid.Empty;
 
         [Required]
-        public Guid RoleUuid { get; set; } = Guid.Empty;
+        public string Role { get; set; } = String.Empty;
 
 
 

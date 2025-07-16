@@ -20,6 +20,13 @@ namespace WebApplicationViajeCero.Context
                 .Property(p => p.Zone)
                 .HasConversion<string>();
 
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Province)
+                .WithMany(p => p.Users)
+                .HasForeignKey(u => u.ProvinceId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+
             base.OnModelCreating(modelBuilder);
         }
 
