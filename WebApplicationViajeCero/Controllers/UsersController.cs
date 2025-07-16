@@ -118,7 +118,7 @@ namespace WebApiViejaCero.Controllers
         [HttpDelete("{uuid}")]
         public async Task<IActionResult> DeleteUser(Guid uuid)
         {
-            var user = await _context.Users.FindAsync(uuid);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Uuid == uuid);
             if (user == null)
             {
                 return NotFound();

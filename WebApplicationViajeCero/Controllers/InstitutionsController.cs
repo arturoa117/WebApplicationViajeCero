@@ -23,7 +23,7 @@ namespace WebApiViejaCero.Controllers
         [HttpGet]
         public async Task<ActionResult<PagedResult<Institution>>> GetInstitution([FromQuery] int page = 1, [FromQuery] int pagesize = 50, [FromQuery] string query = null)
         {
-            if (page <= 0) page = 1;
+            if (page <= 0) page = 0;
             if (pagesize <= 0 || pagesize > 100) pagesize = 50;
 
             var institutionsQuery = _context.Services.AsQueryable();
