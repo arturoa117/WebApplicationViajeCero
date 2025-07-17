@@ -19,5 +19,9 @@ namespace WebApplicationViajeCero.Models
         [Required]
         public int ProvinceId { get; set; }
         public Province Province { get; set; }
+
+        public string Incident {  get; set; }
+
+        public string ExtraOptions { get; set; }
     }
 }

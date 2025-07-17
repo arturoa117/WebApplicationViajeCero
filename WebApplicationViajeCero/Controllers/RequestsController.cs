@@ -112,14 +112,23 @@ namespace WebApiViejaCero.Controllers
                     error = new { message = "Provincia no encontrada." }
                 });
 
+            if (await _context.Users.AnyAsync(inc => inc.Identification == requestDTO.Incident))
+                return BadRequest(new
+                {
+                    error = new { message = "Datos no validos" }
+                });
+
+            if (await _context.Users.AnyAsync(e => e.Email == requestDTO.ExtraOptions))
+                return BadRequest("Datos no validos");
+
             var newRequest = new Request
             {
                 UserId = user.Id,
                 Sex = requestDTO.Sex,
                 ServiceId = service.Id,
-                ProvinceId = province.Id
-
-
+                ProvinceId = province.Id,
+                Incident = requestDTO.Incident,
+                ExtraOptions = requestDTO.ExtraOptions
             };
 
             _context.Requests.Add(newRequest);
