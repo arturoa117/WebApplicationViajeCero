@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace WebApplicationViajeCero.Models
 {
-    public class Province : BaseClass
+    public class Province : BaseClass 
     {
         [Required]
         public string Name { get; set; }
