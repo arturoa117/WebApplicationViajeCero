@@ -88,7 +88,7 @@ namespace WebApiViejaCero.Controllers
         [HttpDelete("{uuid}")]
         public async Task<IActionResult> DeleteProvince(Guid uuid)
         {
-            var province = await _context.Provinces.FindAsync(uuid);
+            var province = await _context.Provinces.FirstOrDefaultAsync(p =>  p.Uuid == uuid);
             if (province == null)
             {
                 return NotFound();

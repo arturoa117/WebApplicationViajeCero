@@ -31,5 +31,7 @@ namespace WebApplicationViajeCero.Models
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public Zones Zone { get; set; }
 
+        public ICollection<User> Users { get; set; }
+
     }
 }

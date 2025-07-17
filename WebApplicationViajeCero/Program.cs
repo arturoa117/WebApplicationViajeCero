@@ -10,6 +10,15 @@ using WebApplicationViajeCero.Seeders.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowCors",
+                            builder =>
+                            {
+                                builder.WithOrigins("http://localhost").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                            });
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ApplicationBuilder>();
@@ -67,9 +76,9 @@ using (var scope = app.Services.CreateScope())
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    var filePath = "C:\\Users\\Burocracia Cero\\source\\repos\\WebApplicationViajeCero\\WebApplicationViajeCero\\Seeders\\Data\\Reporte de Servicio por Institución.xlsx";
+    //var filePath = "C:\\Users\\Burocracia Cero\\source\\repos\\WebApplicationViajeCero\\WebApplicationViajeCero\\Seeders\\Data\\Reporte de Servicio por Institución.xlsx";
     
-    ServicesSeeder.Seed(context, filePath);
+    ServicesSeeder.Seed(context);
 }
 
 // Configure the HTTP request pipeline.
@@ -80,6 +89,8 @@ if (app.Environment.IsDevelopment())
     }
 
 builder.Services.AddAuthorization();
+
+app.UseCors("AllowCors");
 
 app.UseHttpsRedirection();
 

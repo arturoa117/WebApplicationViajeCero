@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplicationViajeCero.Models;
 using WebApplicationViajeCero.Context;
 using Microsoft.EntityFrameworkCore;
+using static WebApplicationViajeCero.Models.Pagination;
 
 namespace WebApiViejaCero.Controllers
 {
@@ -20,10 +21,42 @@ namespace WebApiViejaCero.Controllers
         //GET api/Institutions
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Institution>>> GetInstitution()
+        public async Task<ActionResult<PagedResult<Institution>>> GetInstitution([FromQuery] int page = 1, [FromQuery] int pagesize = 50, [FromQuery] string query = null)
         {
-            return await _context.Institutions.ToListAsync();
+            if (page <= 0) page = 0;
+            if (pagesize <= 0 || pagesize > 100) pagesize = 50;
 
+            var institutionsQuery = _context.Services.AsQueryable();
+
+            if (!string.IsNullOrEmpty(query))
+            {
+                institutionsQuery = institutionsQuery.Where(i => i.Name.Contains(query) || i.Institution.Acronym.Contains(query));
+            }   
+
+            var totalRecords = await _context.Institutions.CountAsync();
+
+            var institutions = await _context.Institutions
+                .OrderBy(i => i.Name)
+                .Skip((page - 1) * pagesize)
+                .Take(pagesize)
+                .Select(i => new Institution
+                {
+
+                    Uuid = i.Uuid,
+                    Name = i.Name,
+                    Acronym = i.Acronym
+
+                })
+                .ToListAsync();
+            var result = new PagedResult<Institution>
+            {
+                Total = totalRecords,
+                Page = page,
+                PageSize = pagesize,
+                Data = institutions
+            };
+
+            return Ok(result);
         }
 
         //GET api/Institutions/5
@@ -92,7 +125,7 @@ namespace WebApiViejaCero.Controllers
 
         public async Task<IActionResult> DeleteInstitution(Guid uuid)
         {
-            var institution = await _context.Institutions.FindAsync(uuid);
+            var institution = await _context.Institutions.FirstOrDefaultAsync(i => i.Uuid == uuid);
 
             if (institution == null)
             {

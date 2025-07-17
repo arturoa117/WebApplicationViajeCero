@@ -89,7 +89,7 @@ namespace WebApiViejaCero.Controllers
 
         public async Task<IActionResult> DeleteRole(Guid uuid)
         {
-            var role = await _context.Roles.FindAsync();
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Uuid == uuid);
 
             if (role == null)
             {
