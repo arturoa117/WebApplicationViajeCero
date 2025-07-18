@@ -130,6 +130,7 @@ namespace WebApiViejaCero.Controllers
                 Sex = requestDTO.Sex,
                 ServiceId = service.Id,
                 ProvinceId = province.Id,
+                Unavailable = requestDTO.Unavailable,
                 Incident = requestDTO.Incident,
                 ExtraOptions = requestDTO.ExtraOptions
             };
