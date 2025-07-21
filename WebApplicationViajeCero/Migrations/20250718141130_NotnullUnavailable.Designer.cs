@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplicationViajeCero.Context;
 
@@ -11,9 +12,11 @@ using WebApplicationViajeCero.Context;
 namespace WebApplicationViajeCero.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250718141130_NotnullUnavailable")]
+    partial class NotnullUnavailable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,9 +109,11 @@ namespace WebApplicationViajeCero.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraOptions")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Incident")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("ProvinceId")
@@ -122,6 +127,7 @@ namespace WebApplicationViajeCero.Migrations
                         .HasColumnType("varchar(1)");
 
                     b.Property<string>("Unavailable")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("UserId")

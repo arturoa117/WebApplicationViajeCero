@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BCrypt.Net;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,9 +26,26 @@ namespace WebApiViejaCero.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<GetAllUsersDTO>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var users = await _context.Users
+                 .Include(u => u.Role)
+                 .Include(u => u.Province)
+                 .Select(u => new GetAllUsersDTO
+                 {
+                     Identification = u.Identification,
+                     Name = u.Name,
+                     LastName = u.LastName,
+                     Email = u.Email,
+                     CellPhone = u.CellPhone,
+                     Password = u.Password,
+                     guid = u.Uuid,
+                     Role = u.Role,
+                     Province = u.Province
+                 })
+                 .ToListAsync();
+
+            return Ok(users);
         }
 
         // GET: api/Users/5

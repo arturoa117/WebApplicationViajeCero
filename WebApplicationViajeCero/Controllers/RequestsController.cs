@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OfficeOpenXml;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using WebApplicationViajeCero.Context;
 using WebApplicationViajeCero.DTOs;
 using WebApplicationViajeCero.Models;
+using NuGet.Packaging;
+using System.ComponentModel;
 
 namespace WebApiViejaCero.Controllers
 {
@@ -112,14 +115,24 @@ namespace WebApiViejaCero.Controllers
                     error = new { message = "Provincia no encontrada." }
                 });
 
+            if (await _context.Users.AnyAsync(inc => inc.Identification == requestDTO.Incident))
+                return BadRequest(new
+                {
+                    error = new { message = "Datos no validos" }
+                });
+
+            if (await _context.Users.AnyAsync(e => e.Email == requestDTO.ExtraOptions))
+                return BadRequest("Datos no validos");
+
             var newRequest = new Request
             {
                 UserId = user.Id,
                 Sex = requestDTO.Sex,
                 ServiceId = service.Id,
-                ProvinceId = province.Id
-
-
+                ProvinceId = province.Id,
+                Unavailable = requestDTO.Unavailable,
+                Incident = requestDTO.Incident,
+                ExtraOptions = requestDTO.ExtraOptions
             };
 
             _context.Requests.Add(newRequest);
@@ -149,5 +162,6 @@ namespace WebApiViejaCero.Controllers
         {
             return _context.Requests.Any(e => e.Uuid == uuid);
         }
+
     }
 }
