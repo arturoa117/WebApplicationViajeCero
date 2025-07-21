@@ -114,8 +114,14 @@ namespace WebApplicationViajeCero.Migrations
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("ProvinceUuid")
+                        .HasColumnType("char(36)");
+
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
+
+                    b.Property<Guid?>("ServiceUuid")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Sex")
                         .IsRequired()
@@ -126,6 +132,9 @@ namespace WebApplicationViajeCero.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("UserUuid")
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid>("Uuid")
                         .HasColumnType("char(36)");

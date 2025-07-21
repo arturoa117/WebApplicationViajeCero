@@ -20,5 +20,7 @@ namespace WebApplicationViajeCero.DTOs
         public Guid ProvinceUuid { get; set; } = Guid.Empty;
         public string? Incident { get; set; } = String.Empty;
         public string? ExtraOptions { get; set; } = String.Empty;
+
+
     }
 }

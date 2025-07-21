@@ -124,6 +124,11 @@ namespace WebApiViejaCero.Controllers
             if (await _context.Users.AnyAsync(e => e.Email == requestDTO.ExtraOptions))
                 return BadRequest("Datos no validos");
 
+            if(string.IsNullOrEmpty(requestDTO.ExtraOptions) && string.IsNullOrEmpty(requestDTO.Unavailable) && string.IsNullOrEmpty(requestDTO.ServiceUuid.ToString())) {
+
+                return BadRequest(new { error = new { Message = "Debe de estar lleno solamente un campo sobre el tipo de servicio" } });
+            }
+
             var newRequest = new Request
             {
                 UserId = user.Id,

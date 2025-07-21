@@ -14,9 +14,7 @@ namespace WebApplicationViajeCero.Models
         public string? Unavailable { get; set; }
         public string? Incident { get; set; }
         public string? ExtraOptions { get; set; }
-
-        [Required]
-        public int ServiceId { get; set; }
+        public int? ServiceId { get; set; }
         public Service Service { get; set; }
 
         [Required]
