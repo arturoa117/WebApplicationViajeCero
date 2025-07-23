@@ -34,32 +34,46 @@ namespace WebApiViejaCero.Controllers
 
             // Encabezados
             worksheet.Cell(1, 1).Value = "ID Solicitud";
-            worksheet.Cell(1, 2).Value = "Servicio";
-            worksheet.Cell(1, 3).Value = "Total Solicitado";
-            worksheet.Cell(1, 4).Value = "Género";
-            worksheet.Cell(1, 5).Value = "Provincia";
-            worksheet.Cell(1, 6).Value = "Región";
+            worksheet.Cell(1, 2).Value = "Servicio Solicitado";
+            worksheet.Cell(1, 3).Value = "Servicio no Disponible en el Portal GOB.DO";
+            worksheet.Cell(1, 4).Value = "Opciones Adicionales";
+            worksheet.Cell(1, 5).Value = "Incidencias";
+            worksheet.Cell(1, 6).Value = "Total Solicitado";
+            worksheet.Cell(1, 7).Value = "Género";
+            worksheet.Cell(1, 8).Value = "Provincia";
+            worksheet.Cell(1, 9).Value = "Región";
 
             //var totalMasculine = data.Where((r) => r.Sex == 'm').Count();
             //var totalFemenine = data.Where((r) => r.Sex == 'f').Count();
             // int masculineCount = 0, femenineCount = 0;
 
-/*  for (int i = 0; i < data.Count; i++)
-  {
-      masculineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'm');
-      femenineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'f');
-  }
-  }*/
+            /*  for (int i = 0; i < data.Count; i++)
+              {
+                  masculineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'm');
+                  femenineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'f');
+              }
+              }*/
+            foreach (var item in data)
+            {
+                if (string.IsNullOrWhiteSpace(item.Unavailable) || item.Unavailable == "NULL")
+                {
+                    item.Unavailable = "N/A";
+                    item.ExtraOptions = "N/A";
+                    item.Incident = "N/A";
+                }
+            }
 
-  // Contenido
-  for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Count; i++)
   {
       worksheet.Cell(i + 2, 1).Value = data[i].Id;
-      worksheet.Cell(i + 2, 2).Value = data[i].Service?.Name;
-      worksheet.Cell(i + 2, 3).Value = data.Where(r => r.Service?.Name == data[i].Service?.Name).Count();
-      worksheet.Cell(i + 2, 4).Value = data[i].Sex.ToString() ;
-      worksheet.Cell(i + 2, 5).Value = data[i].Province?.Name; 
-      worksheet.Cell(i + 2, 6).Value = data[i].Province.Zone.ToString();
+      worksheet.Cell(i + 2, 2).Value = data[i].Service?.Name ?? "N/A";
+      worksheet.Cell(i + 2, 3).Value = data[i].Unavailable ?? "N/A";
+      worksheet.Cell(i + 2, 4).Value = data[i].ExtraOptions ?? "N/A";
+      worksheet.Cell(i + 2, 5).Value = data[i].Incident ?? "N/A";
+      worksheet.Cell(i + 2, 6).Value = data.Where(r => r.Service?.Name == data[i].Service?.Name).Count();
+      worksheet.Cell(i + 2, 7).Value = data[i].Sex.ToString() ;
+      worksheet.Cell(i + 2, 8).Value = data[i].Province?.Name; 
+      worksheet.Cell(i + 2, 9).Value = data[i].Province.Zone.ToString();
   }
 
   using var stream = new MemoryStream();
