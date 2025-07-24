@@ -45,15 +45,23 @@ namespace WebApiViejaCero.Controllers
             //var totalFemenine = data.Where((r) => r.Sex == 'f').Count();
             // int masculineCount = 0, femenineCount = 0;
 
-/*  for (int i = 0; i < data.Count; i++)
-  {
-      masculineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'm');
-      femenineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'f');
-  }
-  }*/
+            /*  for (int i = 0; i < data.Count; i++)
+              {
+                  masculineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'm');
+                  femenineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'f');
+              }
+              }*/
+            foreach (var item in data)
+            {
+                if (string.IsNullOrWhiteSpace(item.Unavailable) || item.Unavailable == "NULL")
+                {
+                    item.Unavailable = "N/A";
+                    item.ExtraOptions = "N/A";
+                    item.Incident = "N/A";
+                }
+            }
 
-  // Contenido
-  for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Count; i++)
   {
       worksheet.Cell(i + 2, 1).Value = data[i].Id;
       worksheet.Cell(i + 2, 2).Value = data[i].Service?.Name;
