@@ -6,6 +6,7 @@ using BCrypt.Net;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
 using WebApplicationViajeCero.Context;
 using WebApplicationViajeCero.DTOs;
@@ -148,13 +149,19 @@ namespace WebApiViejaCero.Controllers
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Uuid == uuid);
             if (user == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    error = new { message = "Usuario no encontrado." }
+                });
             }
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new
+            {
+                message = "Usuario eliminado." 
+            });
         }
 
         private bool UserExists(Guid uuid)

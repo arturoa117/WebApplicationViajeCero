@@ -91,13 +91,19 @@ namespace WebApiViejaCero.Controllers
             var province = await _context.Provinces.FirstOrDefaultAsync(p =>  p.Uuid == uuid);
             if (province == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    error = new { message = "Provincia no encontrada." }
+                });
             }
 
             _context.Provinces.Remove(province);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new
+            {
+                message = "Provincia eliminada."
+            });
         }
 
         private bool ProvinceExists(Guid uuid)

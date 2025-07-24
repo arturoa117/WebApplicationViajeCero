@@ -121,7 +121,7 @@ namespace WebApiViejaCero.Controllers
 
         //DELETE api/Institutions/5
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{uuid}")]
 
         public async Task<IActionResult> DeleteInstitution(Guid uuid)
         {
@@ -129,13 +129,19 @@ namespace WebApiViejaCero.Controllers
 
             if (institution == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    error = new { message = "Institución no encontrada." }
+                });
             }
 
             _context.Institutions.Remove(institution);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new
+            {
+                message = "Institución eliminada."
+            });
         }
 
         private bool InstitutionExists(Guid uuid)

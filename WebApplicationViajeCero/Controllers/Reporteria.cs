@@ -56,7 +56,7 @@ namespace WebApiViejaCero.Controllers
                 if (string.IsNullOrWhiteSpace(item.Unavailable) || item.Unavailable == "NULL")
                 {
                     item.Unavailable = "N/A";
-                    item.ExtraOptions = "N/A";
+                    item.ExtraOptionId = null;
                     item.Incident = "N/A";
                 }
             }

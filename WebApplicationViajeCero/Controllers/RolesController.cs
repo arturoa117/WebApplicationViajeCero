@@ -85,7 +85,7 @@ namespace WebApiViejaCero.Controllers
 
         //DELETE api/Roles/5
 
-        [HttpDelete]
+        [HttpDelete("{uuid}")]
 
         public async Task<IActionResult> DeleteRole(Guid uuid)
         {
@@ -93,13 +93,19 @@ namespace WebApiViejaCero.Controllers
 
             if (role == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    error = new { message = "Rol no encontrado." }
+                });
             }
 
             _context.Roles.Remove(role);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new
+            {
+                message = "Rol eliminado."
+            });
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]

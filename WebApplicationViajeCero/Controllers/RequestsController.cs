@@ -145,13 +145,19 @@ namespace WebApiViejaCero.Controllers
             var request = await _context.Requests.FirstOrDefaultAsync(r => r.Uuid == uuid);
             if (request == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    error = new { message = "Solicitud no encontrada." }
+                });
             }
 
             _context.Requests.Remove(request);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new
+            {
+                message = "Solicitud eliminada."
+            });
         }
 
         private bool RequestExists(Guid uuid)

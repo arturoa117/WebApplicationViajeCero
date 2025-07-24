@@ -157,7 +157,7 @@ namespace WebApiViejaCero.Controllers
 
         //DELETE api/Services/5
 
-        [HttpDelete]
+        [HttpDelete("{uuid}")]
 
         public async Task<IActionResult> DeleteService(Guid uuid)
             {
@@ -165,14 +165,20 @@ namespace WebApiViejaCero.Controllers
 
                 if (service == null)
                 {
-                    return NotFound();
-                }
+                return NotFound(new
+                {
+                    error = new { message = "Servicio no encontrado." }
+                });
+            }
             
                 _context.Services.Remove(service);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
-            }
+                return Ok(new
+                {
+                message = "Servicio eliminado."
+                });
+        }
 
         private bool ServiceExists(Guid uuid)
         {
