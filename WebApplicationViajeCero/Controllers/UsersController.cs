@@ -104,13 +104,22 @@ namespace WebApiViejaCero.Controllers
                 });
         
             if (await _context.Users.AnyAsync(u => u.Email == userDTO.Email))
-                return BadRequest("El correo ya está registrado.");
+                return BadRequest(new
+                {
+                    error = new { message = "El correo ya está registrada." }
+                });
 
             var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Uuid == userDTO.ProvinceUuid);
-            if (province == null) return BadRequest("Provincia no válida.");
+            if (province == null) return BadRequest(new
+            {
+                error = new { message = "Provincia no valida." }
+            });
 
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Description == userDTO.Role);
-            if (role == null) return BadRequest("Rol no válido.");
+            if (role == null) return BadRequest(new
+            {
+                error = new { message = "Rol no valido." }
+            });
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(userDTO.Password);
 

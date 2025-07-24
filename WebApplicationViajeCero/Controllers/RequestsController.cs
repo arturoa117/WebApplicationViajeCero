@@ -115,21 +115,12 @@ namespace WebApiViejaCero.Controllers
                     error = new { message = "Provincia no encontrada." }
                 });
 
-            if (await _context.Users.AnyAsync(inc => inc.Identification == requestDTO.Incident))
-                return BadRequest(new
-                {
-                    error = new { message = "Datos no validos" }
-                });
-
-            if (await _context.Users.AnyAsync(e => e.Email == requestDTO.ExtraOptions))
-                return BadRequest("Datos no validos");
-
-            if(string.IsNullOrEmpty(requestDTO.ExtraOptions) && string.IsNullOrEmpty(requestDTO.Unavailable) && string.IsNullOrEmpty(requestDTO.ServiceUuid.ToString())) {
+            if(requestDTO.ExtraOptionId == null && string.IsNullOrEmpty(requestDTO.Unavailable) && string.IsNullOrEmpty(requestDTO.ServiceUuid.ToString())) {
 
                 return BadRequest(new { error = new { Message = "Debe de estar lleno solamente un campo sobre el tipo de servicio" } });
             }
 
-            var newRequest = new Request
+            var newRequest = new Request 
             {
                 UserId = user.Id,
                 Sex = requestDTO.Sex,
@@ -137,7 +128,7 @@ namespace WebApiViejaCero.Controllers
                 ProvinceId = province.Id,
                 Unavailable = requestDTO.Unavailable,
                 Incident = requestDTO.Incident,
-                ExtraOptions = requestDTO.ExtraOptions
+                ExtraOptionId = requestDTO.ExtraOptionId
             };
 
             _context.Requests.Add(newRequest);

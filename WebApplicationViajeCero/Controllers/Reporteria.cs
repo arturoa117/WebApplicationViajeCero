@@ -39,6 +39,7 @@ namespace WebApiViejaCero.Controllers
             worksheet.Cell(1, 4).Value = "Género";
             worksheet.Cell(1, 5).Value = "Provincia";
             worksheet.Cell(1, 6).Value = "Región";
+            worksheet.Cell(1, 7).Value = "Fecha";
 
             //var totalMasculine = data.Where((r) => r.Sex == 'm').Count();
             //var totalFemenine = data.Where((r) => r.Sex == 'f').Count();
@@ -60,6 +61,7 @@ namespace WebApiViejaCero.Controllers
       worksheet.Cell(i + 2, 4).Value = data[i].Sex.ToString() ;
       worksheet.Cell(i + 2, 5).Value = data[i].Province?.Name; 
       worksheet.Cell(i + 2, 6).Value = data[i].Province.Zone.ToString();
+      worksheet.Cell(i + 2, 6).Value = data[i].DateCreated.ToString();
   }
 
   using var stream = new MemoryStream();

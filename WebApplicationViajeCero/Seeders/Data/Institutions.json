@@ -556,5 +556,9 @@
   {
     "Name": "Oficina Gubernamental de Tecnologías de la Información y Comunicación",
     "Acronym": "OGTIC"
+  },
+  {
+    "Name": "Otros",
+    "Acronym": "OTROS"
   }
 ]

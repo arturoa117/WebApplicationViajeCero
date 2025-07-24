@@ -86,7 +86,10 @@ namespace WebApiViejaCero.Controllers
 
             if (service == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    error = new { message = "Servicio no encontrado." }
+                });
             }
 
             return service;
@@ -100,11 +103,17 @@ namespace WebApiViejaCero.Controllers
         {
             var foundService = await _context.Services.FirstOrDefaultAsync(e => e.Uuid == uuid);
 
-            if (foundService == null) return NotFound("Service not found");
+            if (foundService == null) return NotFound(new
+            {
+                error = new { message = "Servicio no encontrado." }
+            });
 
             var institution = await _context.Institutions.FirstOrDefaultAsync(e => e.Uuid == service.InstitutionUuid);
 
-            if (institution == null) return NotFound("Institution not found");
+            if (institution == null) return NotFound(new
+            {
+                error = new { message = "Institución no encontrada." }
+            });
 
             _context.Entry(service).State = EntityState.Modified;
 
@@ -135,7 +144,10 @@ namespace WebApiViejaCero.Controllers
         {
             var institution = await _context.Institutions.FirstOrDefaultAsync(e => e.Uuid == service.InstitutionUuid);
 
-            if (institution == null) return NotFound("Institution not found");
+            if (institution == null) return NotFound(new
+            {
+                error = new { message = "Institución no encontrada." }
+            });
 
             _context.Services.Add(new Service { Name = service.Name, InstitutionId = institution.Id });
             await _context.SaveChangesAsync();

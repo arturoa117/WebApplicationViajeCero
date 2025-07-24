@@ -13,7 +13,8 @@ namespace WebApplicationViajeCero.Models
         public char Sex { get; set; }
         public string? Unavailable { get; set; }
         public string? Incident { get; set; }
-        public string? ExtraOptions { get; set; }
+        public int? ExtraOptionId { get; set; }
+        public Service ExtraOption { get; set; }
         public int? ServiceId { get; set; }
         public Service Service { get; set; }
 
@@ -21,8 +22,5 @@ namespace WebApplicationViajeCero.Models
         public int ProvinceId { get; set; }
         public Province Province { get; set; }
 
-       
-
-      
     }
 }
