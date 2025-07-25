@@ -32,7 +32,7 @@ namespace WebApiViejaCero.Controllers
                 [FromQuery] int page = 1,
                 [FromQuery] int pageSize = 50,
                 [FromQuery] string query = null,
-                [FromQuery] bool ExtraOptions = false
+                [FromQuery] bool extraOption = false
 
             )
         {
@@ -53,10 +53,10 @@ namespace WebApiViejaCero.Controllers
                     s.Institution.Acronym.Contains(query));
             }
 
-            if (ExtraOptions)
+            if (extraOption)
             {
                 servicesQuery = servicesQuery.
-                    Where(s => s.Institution.Name.ToLower() == "Otros");
+                    Where(s => s.Institution.Name == "Otros");
             }
 
             // Obtener el total de registros (después de filtrar)
