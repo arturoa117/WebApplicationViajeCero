@@ -31,9 +31,12 @@ namespace WebApiViejaCero.Controllers
         public async Task<ActionResult<PagedResult<GetServiceDTO>>> GetServices(
                 [FromQuery] int page = 1,
                 [FromQuery] int pageSize = 50,
-                [FromQuery] string query = null
+                [FromQuery] string query = null,
+                [FromQuery] bool ExtraOptions = false
+
             )
         {
+          
             if (page <= 0) page = 1;
             if (pageSize <= 0 || pageSize > 100) pageSize = 50;
 
@@ -48,6 +51,12 @@ namespace WebApiViejaCero.Controllers
                     s.Name.Contains(query) ||
                     s.Institution.Name.Contains(query) ||
                     s.Institution.Acronym.Contains(query));
+            }
+
+            if (ExtraOptions)
+            {
+                servicesQuery = servicesQuery.
+                    Where(s => s.Institution.Name.ToLower() == "Otros");
             }
 
             // Obtener el total de registros (después de filtrar)

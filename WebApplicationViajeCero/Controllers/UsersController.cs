@@ -39,7 +39,6 @@ namespace WebApiViejaCero.Controllers
                      LastName = u.LastName,
                      Email = u.Email,
                      CellPhone = u.CellPhone,
-                     Password = u.Password,
                      guid = u.Uuid,
                      Role = u.Role,
                      Province = u.Province
