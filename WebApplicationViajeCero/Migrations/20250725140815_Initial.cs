@@ -135,7 +135,7 @@ namespace WebApplicationViajeCero.Migrations
                         column: x => x.ProvinceId,
                         principalTable: "Provinces",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
@@ -154,8 +154,12 @@ namespace WebApplicationViajeCero.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Sex = table.Column<string>(type: "varchar(1)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false),
+                    Unavailable = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Incident = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ExtraOptionId = table.Column<int>(type: "int", nullable: true),
+                    ServiceId = table.Column<int>(type: "int", nullable: true),
                     ProvinceId = table.Column<int>(type: "int", nullable: false),
                     Uuid = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -172,11 +176,15 @@ namespace WebApplicationViajeCero.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Requests_Services_ExtraOptionId",
+                        column: x => x.ExtraOptionId,
+                        principalTable: "Services",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Requests_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Requests_Users_UserId",
                         column: x => x.UserId,
@@ -185,6 +193,11 @@ namespace WebApplicationViajeCero.Migrations
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Requests_ExtraOptionId",
+                table: "Requests",
+                column: "ExtraOptionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_ProvinceId",

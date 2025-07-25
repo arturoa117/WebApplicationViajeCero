@@ -12,8 +12,8 @@ using WebApplicationViajeCero.Context;
 namespace WebApplicationViajeCero.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250718141956_NotnullUnavailableFine")]
-    partial class NotnullUnavailableFine
+    [Migration("20250725140815_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,8 +108,8 @@ namespace WebApplicationViajeCero.Migrations
                     b.Property<DateTime>("DateModificated")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("ExtraOptions")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("ExtraOptionId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Incident")
                         .HasColumnType("longtext");
@@ -117,7 +117,7 @@ namespace WebApplicationViajeCero.Migrations
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServiceId")
+                    b.Property<int?>("ServiceId")
                         .HasColumnType("int");
 
                     b.Property<string>("Sex")
@@ -134,6 +134,8 @@ namespace WebApplicationViajeCero.Migrations
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ExtraOptionId");
 
                     b.HasIndex("ProvinceId");
 
@@ -268,6 +270,10 @@ namespace WebApplicationViajeCero.Migrations
 
             modelBuilder.Entity("WebApplicationViajeCero.Models.Request", b =>
                 {
+                    b.HasOne("WebApplicationViajeCero.Models.Service", "ExtraOption")
+                        .WithMany()
+                        .HasForeignKey("ExtraOptionId");
+
                     b.HasOne("WebApplicationViajeCero.Models.Province", "Province")
                         .WithMany()
                         .HasForeignKey("ProvinceId")
@@ -276,15 +282,15 @@ namespace WebApplicationViajeCero.Migrations
 
                     b.HasOne("WebApplicationViajeCero.Models.Service", "Service")
                         .WithMany()
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiceId");
 
                     b.HasOne("WebApplicationViajeCero.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ExtraOption");
 
                     b.Navigation("Province");
 
