@@ -41,16 +41,6 @@ namespace WebApiViejaCero.Controllers
             worksheet.Cell(1, 6).Value = "Región";
             worksheet.Cell(1, 7).Value = "Fecha";
 
-            //var totalMasculine = data.Where((r) => r.Sex == 'm').Count();
-            //var totalFemenine = data.Where((r) => r.Sex == 'f').Count();
-            // int masculineCount = 0, femenineCount = 0;
-
-            /*  for (int i = 0; i < data.Count; i++)
-              {
-                  masculineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'm');
-                  femenineCount = data.Count(r => r.Service?.Name == data[i].Service.Name && r.Sex == 'f');
-              }
-              }*/
             foreach (var item in data)
             {
                 if (string.IsNullOrWhiteSpace(item.Unavailable) || item.Unavailable == "NULL")
@@ -62,23 +52,23 @@ namespace WebApiViejaCero.Controllers
             }
 
             for (int i = 0; i < data.Count; i++)
-  {
-      worksheet.Cell(i + 2, 1).Value = data[i].Id;
-      worksheet.Cell(i + 2, 2).Value = data[i].Service?.Name;
-      worksheet.Cell(i + 2, 3).Value = data.Where(r => r.Service?.Name == data[i].Service?.Name).Count();
-      worksheet.Cell(i + 2, 4).Value = data[i].Sex.ToString() ;
-      worksheet.Cell(i + 2, 5).Value = data[i].Province?.Name; 
-      worksheet.Cell(i + 2, 6).Value = data[i].Province.Zone.ToString();
-      worksheet.Cell(i + 2, 6).Value = data[i].DateCreated.ToString();
-  }
+            {
+                worksheet.Cell(i + 2, 1).Value = data[i].Id;
+                worksheet.Cell(i + 2, 2).Value = data[i].Service?.Name;
+                worksheet.Cell(i + 2, 3).Value = data.Where(r => r.Service?.Name == data[i].Service?.Name).Count();
+                worksheet.Cell(i + 2, 4).Value = data[i].Sex.ToString();
+                worksheet.Cell(i + 2, 5).Value = data[i].Province?.Name;
+                worksheet.Cell(i + 2, 6).Value = data[i].Province.Zone.ToString();
+                worksheet.Cell(i + 2, 7).Value = data[i].DateCreated.ToString();
+            }
 
-  using var stream = new MemoryStream();
-  workbook.SaveAs(stream);
-  stream.Position = 0;
+            using var stream = new MemoryStream();
+            workbook.SaveAs(stream);
+            stream.Position = 0;
 
-  return File(stream.ToArray(),
-              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-              "Solicitudes.xlsx");
-}
-}
+            return File(stream.ToArray(),
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "Solicitudes.xlsx");
+        }
+    }
 }
