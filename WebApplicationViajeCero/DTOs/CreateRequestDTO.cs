@@ -8,18 +8,18 @@ namespace WebApplicationViajeCero.DTOs
         [Required]  
         public Guid UserUuid { get; set; } = Guid.Empty;
 
-        [Required]
-        public char Sex { get; set; }
+        [Required(ErrorMessage = "El sexo es obligatorio.")]
+        [RegularExpression("^[fm]$", ErrorMessage = "El sexo debe ser 'f' o 'm'.")]
+        public char? Sex { get; set; }
 
         public string? Unavailable { get; set; } = String.Empty;
 
-        [Required]
-        public Guid ServiceUuid { get; set; } = Guid.Empty;
+        public Guid? ServiceUuid { get; set; } = Guid.Empty;
 
         [Required]
         public Guid ProvinceUuid { get; set; } = Guid.Empty;
         public string? Incident { get; set; } = String.Empty;
-        public int? ExtraOptionId { get; set; }
+        public Guid? ExtraOptionUuid { get; set; } = Guid.Empty;
 
 
     }

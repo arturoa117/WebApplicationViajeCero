@@ -86,36 +86,46 @@ namespace WebApiViejaCero.Controllers
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Uuid == requestDTO.UserUuid);
 
             if (user == null)
-                return BadRequest(new
+                return NotFound(new
                 {
                     error = new { message = "Usuario no encontrado." }
                 });
 
-            var sex = await _context.Requests.FirstOrDefaultAsync(s => s.Sex == requestDTO.Sex);
+            Service? service = null;
+            bool isServiceEmpty = string.IsNullOrEmpty(requestDTO.ServiceUuid.ToString());
+            if (!isServiceEmpty)
+            {
+                service = await getServicesByExtraOptionAndUuid(requestDTO?.ServiceUuid);
 
-            if (user == null)
-                return BadRequest(new
-                {
-                    error = new { message = "Sexo no valido." }
-                });
-
-            var service = await _context.Services.FirstOrDefaultAsync(se => se.Uuid == requestDTO.ServiceUuid);
-
-            if (service == null)
-                return BadRequest(new
-                {
-                    error = new { message = "Servicio no encontrado."}
-                });
+                if (service == null)
+                    return NotFound(new
+                    {
+                        error = new { message = "Servicio no encontrado." }
+                    });
+            }
 
             var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Uuid == requestDTO.ProvinceUuid);
 
             if (province == null)
-                return BadRequest(new
+                return NotFound(new
                 {
                     error = new { message = "Provincia no encontrada." }
                 });
 
-            if(requestDTO.ExtraOptionId == null && string.IsNullOrEmpty(requestDTO.Unavailable) && string.IsNullOrEmpty(requestDTO.ServiceUuid.ToString())) {
+            Service? extraOptionService = null;
+            bool isExtraOptionServiceEmpty = string.IsNullOrEmpty(requestDTO.ExtraOptionUuid.ToString());
+
+            if (!isExtraOptionServiceEmpty)
+            {
+                extraOptionService = await getServicesByExtraOptionAndUuid(requestDTO.ExtraOptionUuid, true);
+                
+                if(extraOptionService == null)
+                {
+                    return BadRequest(new { error = new { Message = "Por favor seleccionar un servicio de opción adicional" } });
+                }
+            }
+
+            if (isServiceEmpty && isExtraOptionServiceEmpty && string.IsNullOrEmpty(requestDTO.Unavailable)) {
 
                 return BadRequest(new { error = new { Message = "Debe de estar lleno solamente un campo sobre el tipo de servicio" } });
             }
@@ -123,19 +133,29 @@ namespace WebApiViejaCero.Controllers
             var newRequest = new Request 
             {
                 UserId = user.Id,
-                Sex = requestDTO.Sex,
-                ServiceId = service.Id,
+                Sex = requestDTO.Sex.Value,
+                ServiceId = service?.Id,
                 ProvinceId = province.Id,
                 Unavailable = requestDTO.Unavailable,
                 Incident = requestDTO.Incident,
-                ExtraOptionId = requestDTO.ExtraOptionId
+                ExtraOptionId = extraOptionService?.Id
             };
 
             _context.Requests.Add(newRequest);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(PostRequest), new { id = newRequest.Id }, requestDTO);
+        }
 
+        private async Task<Service?> getServicesByExtraOptionAndUuid(Guid? uuid, bool extraOption = false)
+        {
+            IQueryable<Service> query = _context.Services;
+
+            query = query.Where(se => extraOption
+                ? se.Institution.Name == "Otros"
+                : se.Institution.Name != "Otros");
+
+            return await query.FirstOrDefaultAsync(se => se.Uuid == uuid);
         }
 
         // DELETE: api/Requests/5
