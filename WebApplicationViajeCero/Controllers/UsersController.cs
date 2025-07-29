@@ -27,25 +27,26 @@ namespace WebApiViejaCero.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetUsersDTO>>> GetUsers(GetUsersDTO getUsersDTO)
+        public async Task<ActionResult<IEnumerable<GetUsersDTO>>> GetUsers()
         {
-            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Description == getUsersDTO.Role);
-            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Name == getUsersDTO.Province);
-            var users = await _context.Users
-                 .Include(u => u.Role)
-                 .Include(u => u.Province)
-                 .Select(u => new GetUsersDTO
-                 {
-                     Identification = u.Identification,
-                     Name = u.Name,
-                     LastName = u.LastName,
-                     Email = u.Email,
-                     CellPhone = u.CellPhone,
-                     Uuid = u.Uuid,
-                     Role = role.Description,
-                     Province = province.Name
-                 })
-                 .ToListAsync();
+            var usersQuery = _context.Users
+           .Include(u => u.Role)
+           .Include(u => u.Province);
+            
+
+            var users = await usersQuery
+            .Select(u => new GetUsersDTO
+            {
+             Identification = u.Identification,
+             Name = u.Name,
+             LastName = u.LastName,
+             Email = u.Email,
+             CellPhone = u.CellPhone,
+             Uuid = u.Uuid,
+             Role = u.Role.Description,
+             Province = u.Province.Name
+            })
+            .ToListAsync();
 
             return Ok(users);
         }
