@@ -161,7 +161,10 @@ namespace WebApiViejaCero.Controllers
             _context.Services.Add(new Service { Name = service.Name, InstitutionId = institution.Id });
             await _context.SaveChangesAsync();
 
-            return Ok("Service created successfully");
+            return Ok(new
+            {
+                message = "Servicio creado."
+            });
         }
 
         //DELETE api/Services/5

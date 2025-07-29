@@ -27,21 +27,23 @@ namespace WebApiViejaCero.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetAllUsersDTO>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<GetUsersDTO>>> GetUsers(GetUsersDTO getUsersDTO)
         {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Description == getUsersDTO.Role);
+            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Name == getUsersDTO.Province);
             var users = await _context.Users
                  .Include(u => u.Role)
                  .Include(u => u.Province)
-                 .Select(u => new GetAllUsersDTO
+                 .Select(u => new GetUsersDTO
                  {
                      Identification = u.Identification,
                      Name = u.Name,
                      LastName = u.LastName,
                      Email = u.Email,
                      CellPhone = u.CellPhone,
-                     guid = u.Uuid,
-                     Role = u.Role,
-                     Province = u.Province
+                     Uuid = u.Uuid,
+                     Role = role.Description,
+                     Province = province.Name
                  })
                  .ToListAsync();
 
@@ -50,16 +52,33 @@ namespace WebApiViejaCero.Controllers
 
         // GET: api/Users/5
         [HttpGet("{uuid}")]
-        public async Task<ActionResult<User>> GetUser(Guid uuid)
+        public async Task<ActionResult<GetUsersDTO>> GetUser(GetUsersDTO getUsersDTO)
         {
-            var user = await _context.Users.FindAsync(uuid);
+            var user = await _context.Users.FindAsync(getUsersDTO);
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Description == getUsersDTO.Role);
+            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Name == getUsersDTO.Province);
 
             if (user == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    error = new { message = "Usuario no encontrado." }
+                });
             }
 
-            return user;
+            var userDTO = new GetUsersDTO
+            {
+                Identification = user.Identification,
+                Name = user.Name,
+                LastName = user.LastName,
+                Email = user.Email,
+                CellPhone = user.CellPhone,
+                Uuid = user.Uuid,
+                Role = role.Description,
+                Province = province.Name
+            };
+
+            return Ok(userDTO);
         }
 
         // PUT: api/Users/5

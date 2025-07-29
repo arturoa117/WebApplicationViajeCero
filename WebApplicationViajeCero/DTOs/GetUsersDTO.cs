@@ -3,7 +3,7 @@ using WebApplicationViajeCero.Models;
 
 namespace WebApplicationViajeCero.DTOs
 {
-    public class GetAllUsersDTO
+    public class GetUsersDTO
     {
         [Required]
         public string Identification { get; set; }
@@ -26,12 +26,12 @@ namespace WebApplicationViajeCero.DTOs
 
         [Required] 
         
-        public Guid guid { get; set; }
+        public Guid Uuid { get; set; }
 
         [Required]
-        public Role Role { get; set; }
+        public string Role { get; set; } = String.Empty;
 
-        public Province Province { get; set; }
+        public string Province { get; set; } = String.Empty;
 
     }
 
