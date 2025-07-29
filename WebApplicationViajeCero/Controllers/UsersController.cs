@@ -129,7 +129,7 @@ namespace WebApiViejaCero.Controllers
                     error = new { message = "El correo ya está registrada." }
                 });
 
-            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Uuid == userDTO.ProvinceUuid);
+            var province = await _context.Provinces.FirstOrDefaultAsync(p => p.Name == userDTO.Province);
             if (province == null) return BadRequest(new
             {
                 error = new { message = "Provincia no valida." }
@@ -149,6 +149,7 @@ namespace WebApiViejaCero.Controllers
                 Name = userDTO.Name,
                 LastName = userDTO.LastName,
                 Email = userDTO.Email,
+                Password = hashedPassword,
                 CellPhone = userDTO.CellPhone,
                 ProvinceId = province.Id,
                 RoleId = role.Id
