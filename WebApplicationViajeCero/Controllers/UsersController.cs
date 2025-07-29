@@ -149,7 +149,6 @@ namespace WebApiViejaCero.Controllers
                 LastName = userDTO.LastName,
                 Email = userDTO.Email,
                 CellPhone = userDTO.CellPhone,
-                Password = hashedPassword, 
                 ProvinceId = province.Id,
                 RoleId = role.Id
             };
