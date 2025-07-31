@@ -84,7 +84,7 @@ namespace WebApiViejaCero.Controllers
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{uuid}")]
+        [HttpPatch("{uuid}")]
         public async Task<IActionResult> PutUser(Guid uuid, UpdateUserDTO updateUser)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Uuid == uuid);
