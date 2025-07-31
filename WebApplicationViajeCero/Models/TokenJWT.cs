@@ -19,7 +19,7 @@ namespace WebApplicationViajeCero.Models
         {
             var claims = new[]
             {
-                new Claim (ClaimTypes.Name, Identification),
+                new Claim (ClaimTypes.NameIdentifier, Identification),
                 new Claim(ClaimTypes.Role, role)
             };
 
