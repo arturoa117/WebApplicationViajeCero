@@ -85,11 +85,21 @@ namespace WebApiViejaCero.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{uuid}")]
-        public async Task<IActionResult> PutUser(Guid uuid, User user)
+        public async Task<IActionResult> PutUser(Guid uuid, UpdateUserDTO updateUser)
         {
-            if (uuid != user.Uuid)
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Uuid == uuid);
+
+            if (user == null)
             {
-                return BadRequest();
+                return NotFound(new
+                {
+                    error = new { message = "Usuario no encontrado." }
+                });
+            }
+
+            if (!string.IsNullOrWhiteSpace(updateUser.Password))
+            {
+                user.Password = BCrypt.Net.BCrypt.HashPassword(updateUser.Password);
             }
 
             _context.Entry(user).State = EntityState.Modified;
@@ -97,6 +107,11 @@ namespace WebApiViejaCero.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    message = "Usuario actualizado."
+                });
             }
             catch (DbUpdateConcurrencyException)
             {
