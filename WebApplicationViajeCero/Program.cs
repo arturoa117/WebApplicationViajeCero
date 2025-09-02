@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.IdentityModel.Tokens.Experimental;
 using Microsoft.OpenApi.Models;
-using System.Security.Cryptography;
 using System.Text;
 using WebApplicationViajeCero.Context;
 using WebApplicationViajeCero.Models;
@@ -68,11 +65,10 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//MySql conn
 string _GetConnetionString = builder.Configuration.GetConnectionString("Connection");
 builder.Services.AddDbContextPool<AppDbContext>(options => options.UseMySql(_GetConnetionString, ServerVersion.AutoDetect(_GetConnetionString)));
 
@@ -102,7 +98,6 @@ using (var scope = app.Services.CreateScope())
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    //var filePath = "C:\\Users\\Burocracia Cero\\source\\repos\\WebApplicationViajeCero\\WebApplicationViajeCero\\Seeders\\Data\\Reporte de Servicio por Institución.xlsx";
     
     ServicesSeeder.Seed(context);
 }

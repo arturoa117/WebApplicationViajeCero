@@ -19,7 +19,6 @@ namespace WebApplicationViajeCero.Controllers
         private readonly AppDbContext _appDbContext;
         private readonly TokenJWT _tokenJWT;
 
-
         public AuthController(AppDbContext appContext, TokenJWT tokenJWT)
         {
             _appDbContext = appContext;
@@ -30,7 +29,6 @@ namespace WebApplicationViajeCero.Controllers
 
         public IActionResult Login([FromBody] LoginResponseDTO request)
         {
-
             var user = _appDbContext.Users.Include(u => u.Role).FirstOrDefault(u => u.Identification == request.Identification);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.Password)) 
@@ -43,7 +41,6 @@ namespace WebApplicationViajeCero.Controllers
             {
                 Token = token,
                 Expiration = DateTime.UtcNow.AddDays(1)
-
             });
         }
 

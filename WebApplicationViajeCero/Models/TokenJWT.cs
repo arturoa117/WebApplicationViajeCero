@@ -14,7 +14,6 @@ namespace WebApplicationViajeCero.Models
         {
             _config = config;
         }
-
         public string GenerateToken(string Identification, string role)
         {
             var claims = new[]

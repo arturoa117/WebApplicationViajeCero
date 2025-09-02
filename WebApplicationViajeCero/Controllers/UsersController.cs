@@ -33,7 +33,6 @@ namespace WebApiViejaCero.Controllers
            .Include(u => u.Role)
            .Include(u => u.Province);
             
-
             var users = await usersQuery
             .Select(u => new GetUsersDTO
             {
